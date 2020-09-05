@@ -2596,21 +2596,19 @@ input, select, textarea {
 
 		.image img {
 			display: block;
+			max-width:100%;
+			max-height:150%;
 		}
 
-		.image.left, .image.right {
-			max-width: 40%;
-		}
-
-			.image.left img, .image.right img {
+		.image.left img, .image.right img {
 				width: 100%;
-			}
+		}
 
 		.image.left {
 			float: left;
 			margin: 0 2rem 2rem 0;
 			top: 0.75rem;
-			max-width:25.5%;
+			max-width: 26.5%;
 			border-color: #9BB59B #115013;
         	border-image: none;
         	border-radius: 50px 0 50px 0;
@@ -2634,7 +2632,8 @@ input, select, textarea {
 
 		.image.profile {
 			display: block;
-			width: 350px;
+			max-height: 50%;
+			max-width: 50%;
 			border-color: #9BB59B #115013;
         	border-image: none;
         	border-radius: 50% 50% 50% 50%;
