@@ -2610,12 +2610,15 @@ input, select, textarea {
 			float: left;
 			margin: 0 2rem 2rem 0;
 			top: 0.75rem;
+			max-width:23.5%;
 		}
 
 		.image.right {
 			float: right;
 			margin: 0 0 2rem 2rem;
 			top: 0.75rem;
+			max-width:23.5%;
+
 		}
 
 		.image.fit {
