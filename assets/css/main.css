@@ -2609,11 +2609,7 @@ input, select, textarea {
 			margin: 0 2rem 2rem 0;
 			top: 0.75rem;
 			max-width: 26.5%;
-			border-color: #9BB59B #115013;
-        	border-image: none;
-        	border-radius: 50px 0 50px 0;
-        	border-style: solid;
-        	border-width: 20px;
+			
 		}
 
 		.image.right {
