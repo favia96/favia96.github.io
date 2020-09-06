@@ -2628,16 +2628,9 @@ input, select, textarea {
 
 		.image.profile {
 			display: block;
-			max-height: 50%;
-			max-width: 50%;
-			border-color: #9BB59B #115013;
-        	border-image: none;
-        	border-radius: 50% 50% 50% 50%;
-        	border-style: solid;
-        	border-width: 15px;
-        	height: 350px;
-        	width: 350px;
-        	overflow: hidden;
+			max-height: 30%;
+			max-width: 30%;
+			
 		}
 
 			.image.fit:first-child {
