@@ -1,0 +1,115 @@
+*{
+  font-family: sans-serif;
+  list-style: none;
+  padding: 0;
+}
+body{
+  background:white;
+}
+.skills{
+  width: 400px;
+  margin: 60px auto;
+  color: darkgreen;
+
+}
+.skill li{
+  margin: 20px 0;
+}
+.bar{
+  background: white;
+  display: block;
+  height: 7px;
+  border: 1px solid rgba(7, 97, 67, 0.3);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px green;
+}
+.bar span{
+  height: 5px;
+  float: left;
+  background:  darkgreen;
+}
+.cpp{
+  width: 85%;
+  animation: cpp 2s;
+}
+.python{
+  width: 70%;
+  animation: python 2s;
+}
+.opencv{
+  width: 70%;
+  animation: opencv 2s;
+}
+.matlab{
+  width: 65%;
+  animation: matlab 2s;
+}
+.keras{
+  width: 65%;
+  animation: keras 2s;
+}
+.office{
+  width: 90%;
+  animation: office 2s;
+}
+.adobe{
+  width: 60%;
+  animation: adobe 2s;
+}
+@keyframes cpp {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 85%;
+  }
+}
+@keyframes python {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 70%;
+  }
+}
+@keyframes opencv {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 70%;
+  }
+}
+@keyframes matlab {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 65%;
+  }
+}
+@keyframes keras {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 65%;
+  }
+}
+@keyframes office {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 90%;
+  }
+}
+@keyframes adobe {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 60%;
+  }
+}
