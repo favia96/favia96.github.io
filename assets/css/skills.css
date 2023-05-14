@@ -29,35 +29,51 @@ body{
   float: left;
   background:  darkgreen;
 }
-.cpp{
-  width: 85%;
-  animation: cpp 2s;
-}
 .python{
-  width: 70%;
+  width: 85%;
   animation: python 2s;
+}
+.pytorch{
+  width: 70%;
+  animation: pytorch 2s;
+}
+.yolo{
+  width: 80%;
+  animation: yolo 2s;
+}
+.ccpp{
+  width: 75%;
+  animation: ccpp 2s;
 }
 .opencv{
   width: 70%;
   animation: opencv 2s;
 }
+.azure{
+  width: 65%;
+  animation: azure 2s;
+}
+.deeplearning{
+  width: 80%;
+  animation: deeplearning 2s;
+}
 .matlab{
   width: 65%;
   animation: matlab 2s;
 }
-.keras{
+.kerastf{
   width: 65%;
-  animation: keras 2s;
+  animation: kerastf 2s;
 }
-.office{
-  width: 90%;
-  animation: office 2s;
+.msoffice{
+  width: 100%;
+  animation: msoffice 2s;
 }
-.adobe{
+.adobepsai{
   width: 60%;
-  animation: adobe 2s;
+  animation: adobepsai 2s;
 }
-@keyframes cpp {
+@keyframes python {
   0%{
     width: 0%;
   }
@@ -65,12 +81,28 @@ body{
     width: 85%;
   }
 }
-@keyframes python {
+@keyframes pytorch {
   0%{
     width: 0%;
   }
   100%{
     width: 70%;
+  }
+}
+@keyframes yolo {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 80%;
+  }
+}
+@keyframes ccpp {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 75%;
   }
 }
 @keyframes opencv {
@@ -81,6 +113,22 @@ body{
     width: 70%;
   }
 }
+@keyframes azure {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 65%;
+  }
+}
+@keyframes deeplearning {
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 80%;
+  }
+}
 @keyframes matlab {
   0%{
     width: 0%;
@@ -89,7 +137,7 @@ body{
     width: 65%;
   }
 }
-@keyframes keras {
+@keyframes kerastf {
   0%{
     width: 0%;
   }
@@ -97,15 +145,15 @@ body{
     width: 65%;
   }
 }
-@keyframes office {
+@keyframes msoffice {
   0%{
     width: 0%;
   }
   100%{
-    width: 90%;
+    width: 100%;
   }
 }
-@keyframes adobe {
+@keyframes adobepsai {
   0%{
     width: 0%;
   }
