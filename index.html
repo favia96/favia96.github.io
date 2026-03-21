@@ -1,227 +1,910 @@
 <!DOCTYPE HTML>
-<!--
-	Massively by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-177331945-1"></script>
-		<script>
-	  		window.dataLayer = window.dataLayer || [];
-  			function gtag(){dataLayer.push(arguments);}
-  			gtag('js', new Date());
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <title>Federico Favia — Computer Vision & ML Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  			gtag('config', 'UA-177331945-1');
-		</script>
-		<link rel="shortcut icon" type="image/x-icon" href="logo.png" />
-		<title>Federico Favia - Projects</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+    :root {
+      --bg: #090c10;
+      --bg2: #0e1318;
+      --bg3: #141b22;
+      --accent: #00e5ff;
+      --accent2: #7c3aed;
+      --accent3: #f59e0b;
+      --text: #e2e8f0;
+      --text-muted: #64748b;
+      --text-dim: #94a3b8;
+      --border: rgba(255,255,255,0.07);
+      --card: #0d1117;
+      --font-display: 'Syne', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+    html { scroll-behavior: smooth; }
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>My Portfolio</h1>
-						<a class="image profile"><img src="images/profile.png" /></a>
-						<p>A showcase of my projects and my abilities</p>
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-						</p>
-					</div>
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-display);
+      overflow-x: hidden;
+    }
 
-				<!-- Header -->
-					<header id="header">
-						<a class="logo">Computer Vision & Deep Learning</a>
-					</header>
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">PROJECTS</a></li>
-							<li><a href="about.html">About me</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/federico-favia/" class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
-							<li><a href="https://github.com/favia96" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-							<!--
-								<li><a href="https://twitter.com/federico_favia" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-								<li><a href="https://www.instagram.com/federico_favia/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-							    <li><a href="https://www.facebook.com/federico.favia.9/" class="icon brands fa-facebook"><span class="label">Facebook</span></a></li>
-							-->						
-						</ul>
-					</nav>
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.2rem 3rem;
+      background: rgba(9,12,16,0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+    .nav-socials { display: flex; gap: 1rem; }
+    .nav-socials a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      letter-spacing: 0.08em;
+      transition: color 0.2s;
+    }
+    .nav-socials a:hover { color: var(--accent); }
 
-				<!-- Main -->
-					<div id="main">
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 8rem 3rem 4rem;
+      position: relative;
+      overflow: hidden;
+      gap: 4rem;
+    }
+    .hero-text { display: flex; flex-direction: column; }
+    .hero-photo {
+      width: 280px;
+      height: 340px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      position: relative;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.9s forwards;
+    }
+    .hero-photo::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to bottom, transparent 55%, rgba(9,12,16,0.75));
+      pointer-events: none;
+    }
+    .hero-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .hero-photo-label {
+      position: absolute;
+      bottom: 1rem; left: 1rem; z-index: 2;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.6);
+    }
+    .hero-grid-bg {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .hero-glow {
+      position: absolute;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,229,255,0.06) 0%, transparent 70%);
+      top: 10%; right: -100px;
+      pointer-events: none;
+      animation: pulse-glow 6s ease-in-out infinite;
+    }
+    .hero-glow2 {
+      position: absolute;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%);
+      bottom: 10%; left: -80px;
+      pointer-events: none;
+      animation: pulse-glow 8s ease-in-out infinite reverse;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+    }
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+    }
+    .hero-eyebrow::before {
+      content: '▸ ';
+    }
+    .hero-name {
+      font-size: clamp(3.5rem, 9vw, 8rem);
+      font-weight: 800;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      opacity: 0; animation: fadeUp 0.8s 0.35s forwards;
+    }
+    .hero-name span { color: var(--accent); }
+    .hero-title {
+      font-family: var(--font-mono);
+      font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+      margin-bottom: 2.5rem;
+      opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+    }
+    .hero-desc {
+      max-width: 560px;
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-dim);
+      margin-bottom: 3rem;
+      opacity: 0; animation: fadeUp 0.8s 0.65s forwards;
+    }
+    .hero-ctas {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.8rem 1.8rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 3px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      border: 1px solid var(--accent);
+    }
+    .btn-primary:hover { background: transparent; color: var(--accent); }
+    .btn-outline {
+      background: transparent;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+    .hero-scroll-indicator {
+      position: absolute; bottom: 2rem; left: 3rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      display: flex; align-items: center; gap: 0.75rem;
+      opacity: 0; animation: fadeUp 0.8s 1.1s forwards;
+    }
+    .scroll-line {
+      width: 40px; height: 1px;
+      background: var(--text-muted);
+      animation: expand-line 2s 1.5s ease-out forwards;
+      transform-origin: left;
+      transform: scaleX(0);
+    }
+    @keyframes expand-line { to { transform: scaleX(1); } }
 
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									<h2><a href="about.html">FEDERICO <br />FAVIA
-									</a></h2>
-								
-									<p>As a Senior Computer Vision Engineer, you can find here a summary of some of my interesting projects in <b>Computer Vision</b> or <b>Image Processing</b> field. In my portfolio, I show as well a <b>design</b> project I did for a startup <b>Logo</b>.
-									</br>To know more feel free to visit my <a href="https://github.com/favia96?tab=repositories"><b>Github</b></a> or <a href="#footer"><b>contact me</b></a>. </p>
-								</header>
-								<hr />
-								<header><h2>NAVAL TRAFFIC ESTIMATE IN VENICE</h2></header>
-								<ul class="actions special small">
-									<li><a class="button primary small">C++</a></li>
-									<li><a class="button primary small">OpenCV</a></li>
-									<li><a class="button primary small">MATLAB</a></li>
-								</ul>
-								<a class="image main"><img src="images/script.png" alt="" /></a>
-								<p>This Computer Vision project estimates the naval traffic in Venice from a webcam video of the Grand Canal. We make use of motion detection algorithms such as adaptive background subtraction, then morphological filters and blob detection are implemented to count the number of boats and estimating the traffic (integral average, median and flow rate).
-								</p>
-								<ul class="actions special">
-									<li><a href="https://github.com/favia96/Naval-Traffic-Estimate-Venice" class="button large">Check it out</a></li>
-								</ul>
-							</article>
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										<h2>Visual Search System</h2>
-									</header>
-									<ul class="actions special small">
-										<li><a class="button primary small">Python</a></li>
-										<li><a class="button primary small">OpenCV</a></li>
-									</ul>
-									<a class="image fit"><img src="images/bag_visual_words.png" alt="" /></a>
-									<p>This Visual Data project exploits image classification trough on a Visual Search System based on a hierarchical K-means tree structure. The features for the images are represented by SIFT keypoint descriptors. It is based on Bag of Visual Words theory and the score system we used for the object retrieval is the TF-IDF (term frequency inverse document frequency) score.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/favia96/Visual-Search-System" class="button">Code</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2>Football players detection and tracking</h2>
-									</header>
-									<ul class="actions special small">
-										<li><a class="button primary small">YoloV3 (Darknet)</a></li>
-										<li><a class="button primary small">C/C++</a></li>
-										<li><a class="button primary small">OpenCV</a></li>
-										<li><a class="button primary small">MATLAB</a></li>
-									</ul>
-									<a class="image fit"><img src="images/cplusplus.JPG" alt="" /></a>
-									<p>This Computer Vision project, developed as Bachelor Thesis within an internship at <a href="https://xtensa.it/"><b>Xtensa Srl</b></a> in Trento, exploits football players detection and tracking trough <a href="https://pjreddie.com/media/files/papers/YOLOv3.pdf"><b>Yolo V3</b></a>. It aims at understand if deep learning based tracking can outperform classic object tracking algorihtm as Mean-shift.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/favia96/Football-Players-Detection-Tracking" class="button">Code</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2>Image Matching: SIFT & SURF</h2>
-									</header>
-									<ul class="actions special small">
-										<li><a class="button primary small">MATLAB</a></li>
-										<li><a class="button primary small">VLFEAT</a></li>
-									</ul>
-									<a class="image fit"><img src="images/match_sift_nearest_neighbour_dist_ratio.png" alt="" /></a>
-									<a class="image fit"><img src="images/match_surf_nearest_neighbour_dist_ratio.png" alt="" /></a>
-									<p>This Computer Vision project investigates the results of two popular scale-invariant feature detectors, SIFT and SURF, to find features in images and matching similar images.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/favia96/Image-Features-and-Matching-SIFT-and-SURF" class="button">Code</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2>Solar System</h2>
-									</header>
-									<ul class="actions special small">
-										<li><a class="button primary small">C++</a></li>
-										<li><a class="button primary small">OPENGL</a></li>
-										<li><a class="button primary small">GLEW/GLUT</a></li>
-									</ul>
-									<a class="image fit"><img src="images/saturn.png" alt="" /></a>
-									<p>This Computer Graphics project shows a demo of the Solar System, navigable through keyboard and with .jpg textures on the planets.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/favia96/Solar-System_OpenGL" class="button">Code</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2>Image Tampering</h2>
-									</header>
-									<ul class="actions special small">
-										<li><a class="button primary small">MATLAB</a></li>
-									</ul>
-									<a class="image fit"><img src="images/tampering.png" alt="" /></a>
-									<p>This Multimedia Data Security project investigates some techniques to detect if an image is tampered and localizate the inserted artifact. We used PRNU-based or JPEG-based methods.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/favia96/Image-Tampering-Detection" class="button">Code</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										<h2>Engel Logo Startup Lab</h2>
-									</header>
-									<ul class="actions special small">
-										<li><a class="button primary small">Adobe Illustrator</a></li>
-										<li><a class="button primary small">Design</a></li>
-									</ul>
-									<a class="image fit"><img src="images/Logo-Engel.png" alt="" /></a>
-									<p>Personally created and designed the Logo for Engel Startup during Startup Lab Course at University of Trento using professional graphic tools and software.</p>
-									<ul class="actions special">
-										<li><a href="https://clabtrento.it/it/stories/projects/engel" class="button">Project Page</a></li>
-									</ul>
-								</article>
-							</section>
-					</div>
-					<!-- < -->
-					<!-- Contact footer part  -->
-					<footer id="footer">
-						<section class="split contact">
-							<section class="alt">
-								<h3>Location</h3>
-								<p>Mantua, Italy.</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="tel:+39-346-5759669">+39 346 5759669</a></p>
-							</section>
-						</section>
-						<section class="split contact">
-							<section>
-								<h3>Email</h3>
-								<p></br><a href="mailto:federic.fav@gmail.com">federic.fav@gmail.com</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="https://www.linkedin.com/in/federico-favia/" class="icon brands alt fa-linkedin"><span class="label">Linkedin</span></a></li>
-									<li><a href="https://github.com/favia96" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
-									<!--
-									<li><a href="https://twitter.com/federico_favia" class="icon brands alt fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="https://www.instagram.com/federico_favia/" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="https://www.facebook.com/federico.favia.9/" class="icon brands fa-facebook"><span class="label">Facebook</span></a></li>
-									-->
-								</ul>
-							</section>
-						</section>
-				</footer>
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy;  favia96.github.io 2026</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
-			</div>
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-	</body>
-</html>
+    /* ─── SECTION SHARED ─── */
+    section { padding: 6rem 3rem; }
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .section-label::before { content: '//'; opacity: 0.5; }
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 3rem;
+      line-height: 1.1;
+    }
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0 3rem;
+    }
+
+    /* ─── FEATURED PROJECT ─── */
+    #featured { background: var(--bg); }
+    .featured-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 3rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+    .featured-badge {
+      display: inline-block;
+      background: rgba(0,229,255,0.1);
+      border: 1px solid rgba(0,229,255,0.3);
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      padding: 0.3rem 0.7rem;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+    .featured-title {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    .featured-desc {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+    }
+    .tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 2px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+    .featured-img-placeholder {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      height: 280px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-img-placeholder::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,229,255,0.05) 0%, transparent 50%, rgba(124,58,237,0.05) 100%);
+    }
+    .img-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      z-index: 1;
+    }
+
+    /* ─── PROJECTS GRID ─── */
+    #projects { background: var(--bg2); }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0;
+      transition: border-color 0.25s, transform 0.25s;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .project-card-img {
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      background: var(--bg3);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .project-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+      opacity: 0.85;
+    }
+    .project-card:hover .project-card-img img { transform: scale(1.04); }
+    .project-card-img-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, rgba(0,229,255,0.04), rgba(124,58,237,0.04));
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+    .project-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      transform: scaleX(0);
+      transition: transform 0.35s;
+    }
+    .project-card:hover { border-color: rgba(0,229,255,0.2); transform: translateY(-3px); }
+    .project-card:hover::before { transform: scaleX(1); }
+    .project-num {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      opacity: 0.5;
+      margin-bottom: 1rem;
+      letter-spacing: 0.1em;
+    }
+    .project-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+    }
+    .project-desc {
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--text-dim);
+      margin-bottom: 1.5rem;
+    }
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .project-link {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: opacity 0.2s;
+    }
+    .project-link:hover { opacity: 0.7; }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--bg); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-sidebar {
+      position: sticky; top: 6rem;
+    }
+    .profile-frame {
+      width: 100%;
+      aspect-ratio: 1;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .profile-frame::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(0,229,255,0.04), transparent, rgba(124,58,237,0.04));
+    }
+    .profile-placeholder {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+    }
+    .profile-img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .sidebar-stat {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .stat-value {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+    .about-content {}
+    .about-body {
+      font-size: 0.92rem;
+      line-height: 1.9;
+      color: var(--text-dim);
+      margin-bottom: 2rem;
+    }
+    .about-body b { color: var(--text); font-weight: 600; }
+    .about-body a { color: var(--accent); text-decoration: none; }
+    .about-body a:hover { opacity: 0.8; }
+    .about-ctas {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      margin-bottom: 3.5rem;
+    }
+
+    /* ─── SKILLS ─── */
+    .skills-section { margin-top: 3rem; }
+    .skills-section h3 {
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .skill-bar { margin-bottom: 1rem; }
+    .skill-name {
+      display: flex; justify-content: space-between;
+      font-size: 0.8rem;
+      margin-bottom: 0.4rem;
+      color: var(--text-dim);
+    }
+    .skill-name span:last-child {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+    }
+    .bar-track {
+      height: 3px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: fillBar 1s ease-out forwards;
+    }
+    @keyframes fillBar { to { transform: scaleX(1); } }
+    .skill-bar:nth-child(1) .bar-fill { animation-delay: 0.1s; }
+    .skill-bar:nth-child(2) .bar-fill { animation-delay: 0.2s; }
+    .skill-bar:nth-child(3) .bar-fill { animation-delay: 0.3s; }
+    .skill-bar:nth-child(4) .bar-fill { animation-delay: 0.4s; }
+    .skill-bar:nth-child(5) .bar-fill { animation-delay: 0.5s; }
+    .skill-bar:nth-child(6) .bar-fill { animation-delay: 0.6s; }
+    .skill-bar:nth-child(7) .bar-fill { animation-delay: 0.7s; }
+    .skill-bar:nth-child(8) .bar-fill { animation-delay: 0.8s; }
+
+    /* ─── CERTS & LANGUAGES ─── */
+    .certs-langs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+    .sub-section-title {
+      font-size: 0.65rem;
+      font-family: var(--font-mono);
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .cert-list { list-style: none; }
+    .cert-list li {
+      margin-bottom: 0.5rem;
+    }
+    .cert-list a {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      transition: all 0.2s;
+    }
+    .cert-list a::before { content: '→'; color: var(--accent); font-size: 0.7rem; flex-shrink: 0; }
+    .cert-list a:hover { border-color: var(--border); color: var(--text); }
+    .lang-item {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .lang-name { font-size: 0.88rem; font-weight: 600; }
+    .lang-level {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 4rem 3rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+    }
+    .footer-brand {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.02em;
+    }
+    .footer-brand span { color: var(--accent); }
+    .footer-tagline {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .footer-col-title {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.5rem; }
+    .footer-links a {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-bottom {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .footer-copy {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-socials { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .divider { margin: 0 1.5rem; }
+      #hero { grid-template-columns: 1fr; }
+      .hero-photo { width: 130px; height: 160px; position: absolute; top: 5.5rem; right: 1.5rem; }
+      .featured-card { grid-template-columns: 1fr; gap: 2rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .about-sidebar { position: static; }
+      .certs-langs-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero-scroll-indicator { display: none; }
+    }
+    @media (max-width: 600px) {
+      nav { padding: 1rem; }
+      section { padding: 3rem 1rem; }
+      .divider { margin: 0 1rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .hero-name { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav>
+    <a class="nav-logo" href="index.html">FF // Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Projects</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+    <div class="nav-socials">
+      <a href="https://www.linkedin.com/in/federico-favia/" target="_blank">LinkedIn ↗</a>
+      <a href="https://github.com/favia96" target="_blank">GitHub ↗</a>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section id="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="hero-glow"></div>
+    <div class="hero-glow2"></div>
+    <div class="hero-text">
+      <div class="hero-eyebrow">Senior Computer Vision &amp; ML Engineer</div>
+      <h1 class="hero-name">Federico<br /><span>Favia</span></h1>
+      <div class="hero-title">// Deep Learning · Computer Vision · MLOps · Azure · Edge AI</div>
+      <p class="hero-desc">Building innovative solutions for complex visual problems, from object detection pipelines to production cloud and edge deployment. Currently at Technology Data Reply IT.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="about.html">About me</a>
+        <a class="btn btn-outline" href="https://github.com/favia96?tab=repositories" target="_blank">GitHub Repos ↗</a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/federico-favia/" target="_blank">LinkedIn ↗</a>
+      </div>
+      <div class="hero-scroll-indicator">
+        <div class="scroll-line"></div>
+        <span>Scroll to projects</span>
+      </div>
+    </div>
+    <div class="hero-photo">
+      <img src="images/profile.png" alt="Federico Favia" onerror="this.style.display='none'">
+      <span class="hero-photo-label">Federico Favia</span>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── FEATURED PROJECT ─── -->
+  <section id="featured">
+    <div class="section-label">Featured Work</div>
+    <h2 class="section-title">Selected Projects</h2>
+
+    <div class="featured-card">
+      <div>
+        <div class="featured-badge">▸ Featured Project</div>
+        <h3 class="featured-title">Naval Traffic Estimate<br />in Venice</h3>
+        <p class="featured-desc">Estimates naval traffic in Venice from a webcam video of the Grand Canal using motion detection algorithms — adaptive background subtraction, morphological filters, and blob detection to count boats and compute flow rate, integral average, and median.</p>
+        <div class="tech-tags">
+          <span class="tag">C++</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">MATLAB</span>
+          <span class="tag">Background Subtraction</span>
+          <span class="tag">Blob Detection</span>
+        </div>
+        <a class="btn btn-primary" href="https://github.com/favia96/Naval-Traffic-Estimate-Venice" target="_blank">View on GitHub ↗</a>
+      </div>
+      <div class="featured-img-placeholder">
+        <img src="images/script.png" alt="Naval Traffic Estimate" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" onerror="this.parentElement.innerHTML='<span class=\'img-label\'>images/script.png</span>'">
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ─── PROJECTS GRID ─── -->
+  <section id="projects">
+    <div class="section-label">All Work</div>
+    <h2 class="section-title">More Projects</h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <div class="project-card-img">
+          <img src="images/bag_visual_words.png" alt="Visual Search System" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/bag_visual_words.png</div>'">
+        </div>
+        <div class="project-card-body">
+        <div class="project-num">01 / Python · OpenCV</div>
+        <h3 class="project-title">Visual Search System</h3>
+        <p class="project-desc">Image classification via a Visual Search System built on a hierarchical K-means tree. Features represented by SIFT keypoint descriptors, scored with TF-IDF using the Bag of Visual Words model.</p>
+        <div class="tech-tags">
+          <span class="tag">Python</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">SIFT</span>
+          <span class="tag">Bag of Visual Words</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-link" href="https://github.com/favia96/Visual-Search-System" target="_blank">→ View Code</a>
+        </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-img">
+          <img src="images/cplusplus.JPG" alt="Football Players Detection" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/cplusplus.JPG</div>'">
+        </div>
+        <div class="project-card-body">
+        <div class="project-num">02 / YOLOv3 · C++ · OpenCV</div>
+        <h3 class="project-title">Football Players Detection &amp; Tracking</h3>
+        <p class="project-desc">Bachelor Thesis at Xtensa Srl — comparing deep learning based tracking with YOLOv3 against classic algorithms like Mean-shift for football player detection and tracking.</p>
+        <div class="tech-tags">
+          <span class="tag">YOLOv3</span>
+          <span class="tag">Darknet</span>
+          <span class="tag">C/C++</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">MATLAB</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-link" href="https://github.com/favia96/Football-Players-Detection-Tracking" target="_blank">→ View Code</a>
+        </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-img">
+          <img src="images/match_sift_nearest_neighbour_dist_ratio.png" alt="Image Matching SIFT SURF" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/match_sift.png</div>'">
+        </div>
+        <div class="project-card-body">
+        <div class="project-num">03 / MATLAB · VLFeat</div>
+        <h3 class="project-title">Image Matching: SIFT &amp; SURF</h3>
+        <p class="project-desc">Investigation of two popular scale-invariant feature detectors — SIFT and SURF — for feature extraction and image matching using nearest-neighbour distance ratio.</p>
+        <div class="tech-tags">
+          <span class="tag">MATLAB</span>
+          <span class="tag">VLFeat</span>
+          <span class="tag">SIFT</span>
+          <span class="tag">SURF</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-link" href="https://github.com/favia96/Image-Features-and-Matching-SIFT-and-SURF" target="_blank">→ View Code</a>
+        </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-img">
+          <img src="images/saturn.png" alt="Solar System OpenGL" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/saturn.png</div>'">
+        </div>
+        <div class="project-card-body">
+        <div class="project-num">04 / C++ · OpenGL</div>
+        <h3 class="project-title">Solar System (OpenGL)</h3>
+        <p class="project-desc">Interactive 3D Solar System demo with keyboard navigation and .jpg textures on planets, rendered with GLEW and GLUT.</p>
+        <div class="tech-tags">
+          <span class="tag">C++</span>
+          <span class="tag">OpenGL</span>
+          <span class="tag">GLEW</span>
+          <span class="tag">GLUT</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-link" href="https://github.com/favia96/Solar-System_OpenGL" target="_blank">→ View Code</a>
+        </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-img">
+          <img src="images/tampering.png" alt="Image Tampering Detection" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/tampering.png</div>'">
+        </div>
+        <div class="project-card-body">
+        <div class="project-num">05 / MATLAB</div>
+        <h3 class="project-title">Image Tampering Detection</h3>
+        <p class="project-desc">Multimedia Data Security project detecting and localizing tampered image artifacts using PRNU-based and JPEG-based forensic techniques.</p>
+        <div class="tech-tags">
+          <span class="tag">MATLAB</span>
+          <span class="tag">PRNU</span>
+          <span class="tag">JPEG Forensics</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-link" href="https://github.com/favia96/Image-Tampering-Detection" target="_blank">→ View Code</a>
+        </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-img">
+          <img src="images/Logo-Engel.png" alt="Engel Startup Logo" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/Logo-Engel.png</div>'">
+        </div>
+        <div class="project-card-body">
+        <div class="project-num">06 / Design</div>
+        <h3 class="project-title">Engel Startup Logo</h3>
+        <p class="project-desc">Personally created and designed the logo for the Engel startup during the Startup Lab Course at Clab — University of Trento, using Adobe Illustrator.</p>
+        <div class="tech-tags">
+          <span class="tag">Adobe Illustrator</span>
+          <span class="tag">Brand Design</span>
+          <span class="tag">Startup Lab</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-link" href="https://clabtrento.it/it/stories/projects/engel" target="_blank">→ Project Page</a>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer id="footer">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">Federico <span>Favia</span></div>
+        <p class="footer-tagline">Senior Computer Vision &amp; ML Engineer.<br />Building visual production-grade AI systems in the real world.</p>
+        <div style="display:flex;gap:1rem;">
+          <a class="btn btn-outline" href="https://www.linkedin.com/in/federico-favia/" target="_blank" style="font-size:0.65rem;padding:0.5rem 1rem;">LinkedIn ↗</a>
+          <a class="btn btn-outline" href="https://github.com/favia96" target="_blank" style="font-size:0.65rem;padding:0.5rem 1rem;">GitHub ↗</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Location</div>
+        <ul class="footer-links">
+          <li><span style="font-size:0.82rem;color:var(--text-dim);">Mantua, Italy</span></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:federic.fav@gmail.com"><span class="__cf_email__" data-cfemail="federic.fav@gmail.com4">federic.fav@gmail.com</span></a></li>
+          <li><a href="tel:+393465759669">+39 346 5759669</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Projects</a></li>
+          <li><a href="about.html">About me</a></li>
+          <li><a href="resume_files/resume_federico_favia.pdf">CV / Resume</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">favia96.github.io 2026
