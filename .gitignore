@@ -1,1 +1,7 @@
-resume_files/resume_federico_favia_old.pdf
+*.pdf
+*.png
+*.jpg
+*.jpeg
+*.log
+*new*py
+*old*py
