@@ -3,5 +3,5 @@
 *.jpg
 *.jpeg
 *.log
-*new*py
-*old*py
+*new*html
+*old*html

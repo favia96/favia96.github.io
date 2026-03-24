@@ -9,7 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+ 
     :root {
       --bg: #090c10;
       --bg2: #0e1318;
@@ -25,20 +25,20 @@
       --font-display: 'Syne', sans-serif;
       --font-mono: 'Space Mono', monospace;
     }
-
+ 
     html { scroll-behavior: smooth; }
-
+ 
     body {
       background: var(--bg);
       color: var(--text);
       font-family: var(--font-display);
       overflow-x: hidden;
     }
-
+ 
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--bg); }
     ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
-
+ 
     /* ─── NAV ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -76,10 +76,10 @@
       transition: color 0.2s;
     }
     .nav-socials a:hover { color: var(--accent); }
-
+ 
     /* ─── HERO ─── */
     #hero {
-      min-height: 100vh;
+      min-height: 30vh;
       display: grid;
       grid-template-columns: 1fr auto;
       align-items: center;
@@ -90,8 +90,8 @@
     }
     .hero-text { display: flex; flex-direction: column; }
     .hero-photo {
-      width: 280px;
-      height: 340px;
+      width: 360px;
+      height: 380px;
       flex-shrink: 0;
       border-radius: 8px;
       overflow: hidden;
@@ -179,7 +179,7 @@
       opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
     }
     .hero-desc {
-      max-width: 560px;
+      max-width: 1050px;
       font-size: 1rem;
       line-height: 1.8;
       color: var(--text-dim);
@@ -231,12 +231,12 @@
       transform: scaleX(0);
     }
     @keyframes expand-line { to { transform: scaleX(1); } }
-
+ 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
+ 
     /* ─── PAGE HEADER ─── */
     .page-header {
       padding: 9rem 3rem 4rem;
@@ -285,14 +285,14 @@
       line-height: 1.7;
       opacity: 0; animation: fadeUp 0.7s 0.5s forwards;
     }
-
+ 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
+ 
     .divider { height: 1px; background: var(--border); margin: 0 3rem; }
-
+ 
     /* ─── ABOUT BODY ─── */
     .about-section { padding: 5rem 3rem; }
     .about-grid {
@@ -366,7 +366,7 @@
     .btn-primary:hover { background: transparent; color: var(--accent); }
     .btn-outline { background: transparent; color: var(--text-dim); border: 1px solid var(--border); }
     .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-
+ 
     /* ─── BIO ─── */
     .bio-grid {
       display: grid;
@@ -413,7 +413,45 @@
     .bio-block b { color: var(--text); font-weight: 600; }
     .bio-block a { color: var(--accent); text-decoration: none; }
     .bio-block a:hover { opacity: 0.8; }
-
+ 
+    /* ─── BIO COLLAPSIBLE ─── */
+    .bio-collapsed { display: none; }
+    .bio-teaser { margin-bottom: 0; }
+    .bio-expanded .bio-teaser { margin-bottom: 0; }
+    .bio-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: opacity 0.2s;
+    }
+    .bio-toggle:hover { opacity: 0.7; }
+    .bio-toggle-arrow {
+      display: inline-block;
+      transition: transform 0.3s ease;
+    }
+    .bio-toggle.open .bio-toggle-arrow { transform: rotate(180deg); }
+    .bio-collapsed {
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+      transition: max-height 0.4s ease, opacity 0.35s ease;
+    }
+    .bio-collapsed.open {
+      display: block;
+      max-height: 600px;
+      opacity: 1;
+    }
+ 
     /* ─── SKILLS ─── */
     .block-title {
       font-family: var(--font-mono);
@@ -472,7 +510,7 @@
     .skill-item:nth-child(10) .bar-fill { animation-delay: 0.5s; }
     .skill-item:nth-child(11) .bar-fill { animation-delay: 0.55s; }
     .skill-item:nth-child(12) .bar-fill { animation-delay: 0.6s; }
-
+ 
     /* ─── LANGUAGES ─── */
     .langs-row {
       display: flex; gap: 1rem; flex-wrap: wrap;
@@ -492,7 +530,7 @@
       color: var(--accent);
       letter-spacing: 0.1em;
     }
-
+ 
     /* ─── CERTIFICATES ─── */
     .cert-grid {
       display: grid;
@@ -519,7 +557,124 @@
       color: var(--text-dim);
       line-height: 1.3;
     }
-
+ 
+    /* ─── TIMELINE ─── */
+    .timeline-section {
+      margin-bottom: 3.5rem;
+    }
+    .tl-track {
+      position: relative;
+      padding-left: 2.5rem;
+    }
+    .tl-track::before {
+      content: '';
+      position: absolute;
+      left: 6px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+      opacity: 0.35;
+    }
+    .tl-item {
+      position: relative;
+      padding-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .tl-item.tl-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      position: absolute;
+      left: -2.5rem;
+      top: 4px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 8px rgba(0,229,255,0.35);
+      z-index: 1;
+    }
+    .tl-item.tl-internship .tl-dot { border-color: var(--accent3); box-shadow: 0 0 8px rgba(245,158,11,0.35); }
+    .tl-item.tl-work .tl-dot { border-color: var(--accent2); box-shadow: 0 0 8px rgba(124,58,237,0.35); }
+    .tl-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .tl-date {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    .tl-item.tl-internship .tl-date { color: var(--accent3); }
+    .tl-item.tl-work .tl-date { color: #a78bfa; }
+    .tl-badge {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.5rem;
+      border-radius: 2px;
+      border: 1px solid;
+    }
+    .tl-badge-edu { border-color: rgba(0,229,255,0.3); color: var(--accent); background: rgba(0,229,255,0.05); }
+    .tl-badge-intern { border-color: rgba(245,158,11,0.3); color: var(--accent3); background: rgba(245,158,11,0.05); }
+    .tl-badge-work { border-color: rgba(124,58,237,0.3); color: #a78bfa; background: rgba(124,58,237,0.05); }
+    .tl-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    .tl-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      color: var(--text-muted);
+      letter-spacing: 0;
+      padding: 3px;
+    }
+    .tl-logo img { width: 100%; height: 100%; object-fit: contain; }
+    .tl-title-group { flex: 1; }
+    .tl-role {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.25;
+      margin-bottom: 0.15rem;
+    }
+    .tl-org {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+    .tl-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      max-width: 560px;
+    }
+ 
     /* ─── FOOTER ─── */
     footer {
       background: var(--bg2);
@@ -576,7 +731,7 @@
       color: var(--text-muted);
       letter-spacing: 0.08em;
     }
-
+ 
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
       .nav-socials { display: none; }
@@ -599,20 +754,22 @@
   </style>
 </head>
 <body>
-
+ 
   <!-- ─── NAV ─── -->
   <nav>
     <a class="nav-logo" href="index.html">FF // Portfolio</a>
     <ul class="nav-links">
       <li><a href="index.html">Projects</a></li>
       <li><a href="about.html" class="active">About</a></li>
+      <li><a href="#career-timeline">Career</a></li>
+      <li><a href="#my-skills">Skills/Certs</a></li>
     </ul>
     <div class="nav-socials">
       <a href="https://www.linkedin.com/in/federico-favia/" target="_blank">LinkedIn ↗</a>
       <a href="https://github.com/favia96" target="_blank">GitHub ↗</a>
     </div>
   </nav>
-
+ 
   <!-- ─── PAGE HEADER ─── -->
   <!-- <section id="page-header">
   <div class="page-header">
@@ -622,7 +779,7 @@
     <h1 class="page-title">About<br /><span>Me</span></h1>
     <p class="page-subtitle">Senior Computer Vision &amp; ML Engineer based in Mantua, Italy. Passionate about making machines see and understand the world.</p>
   </div> -->
-
+ 
   <section id="hero">
     <div class="hero-grid-bg"></div>
     <div class="hero-glow"></div>
@@ -631,20 +788,23 @@
       <div class="hero-eyebrow">Who I am</div>
       <h1 class="hero-name">About <br /><span>Me</span></h1>
       <div class="hero-title">// Deep Learning · Computer Vision · MLOps · Azure · Edge AI</div>
-      <p class="hero-desc">Senior Computer Vision &amp; ML Engineer based in Mantua, Italy. Passionate about making machines see and understand the world.</p>
+      <p class="hero-desc">Senior Computer Vision &amp; ML Engineer based in Mantua, Italy. Passionate about making machines see and understand the world.
+        <br>Expert in Deep Learning, Image Processing. Worked in aviation, security, smart operations and logistics industries &#128747 &#128230 &#128373
+        <br>Lived in Stockholm, Milan, Trento and Mantua. Speaking English and Italian, <a href="mailto:federic.fav@gmail.com" target="_blank"><span class="__cf_email__" data-cfemail="federic.fav@gmail.com">DM me</span></a> to grab a coffee! &#9749 &#128522 &#128202
+      </p>
     </div>
     <div class="hero-photo">
       <img src="images/cv_image.jpg" onerror="this.style.display='none'">
       <span class="hero-photo-label"></span>
     </div>
   </section>
-
+ 
   <div class="divider"></div>
-
+ 
   <!-- ─── ABOUT BODY ─── -->
   <section class="about-section">
     <div class="about-grid">
-
+ 
       <!-- Sidebar -->
       <div class="about-sidebar">
         <div class="profile-frame">
@@ -675,24 +835,214 @@
           <a class="btn btn-outline" href="index.html">View Projects</a>
         </div>
       </div>
-
+ 
       <!-- Main content -->
       <div>
-
-        <div class="block-title">Biography</div>
+ 
+        <div id="biography" class="block-title">Biography</div>
         <div class="bio-grid">
-          <p class="bio-block">
-            Hello, I am Federico — <b>Senior Computer Vision | ML Engineer</b> at <a href="https://www.reply.com/technology-reply/en/" target="_blank">Technology Data Reply IT</a>, in the Computer Vision Business Unit. Together with my team, I develop innovative solutions for challenging problems of international customers using Deep Learning models, <b>MLOps</b> practices, and Data Science techniques.
-            <br /><br />
-            Apart from being a tech enthusiast, I am a passionate Italian <b>telecommunications engineer</b>, with a strong focus on <b>visual data</b> and signal processing. In particular, I've specialised in <b>Computer Vision</b>, Image Processing and <b>Deep Learning</b> — but I also enjoy the <b>business</b> and innovation side.
-            <br /><br />
-            I hold an <a href="https://masterschool.eitdigital.eu/programmes/vcc/" target="_blank">EIT Joint MSc</a> in <b>Visual Computing Communication</b> from <a href="https://www.kth.se/en" target="_blank">KTH Stockholm</a> and the <a href="https://www.unitn.it/en" target="_blank">University of Trento</a>, plus a <b>BSc</b> in Information and Communications Engineering also from the University of Trento.
-            <br /><br />
-            I had two amazing internships at computer vision startups: <a href="https://www.manomotion.com/" target="_blank">ManoMotion</a> in Stockholm, and <a href="https://xtensa.it/" target="_blank">Xtensa Srl</a> in Trento. In my free time I love movies, theatre, and drawing — which is why I also have a design-inspired mind for visual arts. As a side project, I personally created and designed the <a href="https://www.facebook.com/engelbottle" target="_blank">Engel Logo</a> for a Startup Lab Course at <a href="https://clabtrento.it/it" target="_blank">Clab</a>, Trento in 2019.
-          </p>
+          <div>
+            <p class="bio-block bio-teaser">
+              Hello, I am Federico — <b>Senior Computer Vision | ML Engineer</b> at <a href="https://www.reply.com/technology-reply/en/" target="_blank">Technology Data Reply IT</a>, in the Computer Vision Business Unit. Together with my team, I develop innovative solutions for challenging problems of international customers using Deep Learning models, <b>MLOps</b> practices, and Data Science techniques.
+            </p>
+            <div class="bio-collapsed" id="bio-extra">
+              <p class="bio-block" style="margin-top:1.2rem;">
+                Apart from being a tech enthusiast, I am a passionate Italian <b>telecommunications engineer</b>, with a strong focus on <b>visual data</b> and signal processing. In particular, I've specialised in <b>Computer Vision</b>, Image Processing and <b>Deep Learning</b> — but I also enjoy the <b>business</b> and innovation side.
+                <br /><br />
+                I hold an <a href="https://masterschool.eitdigital.eu/programmes/vcc/" target="_blank">EIT Joint MSc</a> in <b>Visual Computing Communication</b> from <a href="https://www.kth.se/en" target="_blank">KTH Stockholm</a> and the <a href="https://www.unitn.it/en" target="_blank">University of Trento</a>, plus a <b>BSc</b> in Information and Communications Engineering also from the University of Trento.
+                <br /><br />
+                I had two amazing internships at computer vision startups: <a href="https://www.manomotion.com/" target="_blank">ManoMotion</a> in Stockholm, and <a href="https://xtensa.it/" target="_blank">Xtensa Srl</a> in Trento. In my free time I love movies, theatre, and drawing — which is why I also have a design-inspired mind for visual arts. As a side project, I personally created and <a href="index.html#engel" target="_blank"> designed</a> the <a href="https://www.facebook.com/engelbottle" target="_blank">Engel Logo</a> for a Startup Lab Course at <a href="https://clabtrento.it/it" target="_blank">Clab</a>, Trento in 2019.
+              </p>
+            </div>
+            <button class="bio-toggle" id="bio-toggle" onclick="toggleBio()">
+              <span class="bio-toggle-arrow">▾</span>
+              <span id="bio-toggle-label">Read more</span>
+            </button>
+          </div>
         </div>
+ 
+        <div id="career-timeline" class="block-title">Career Timeline</div>
+        <div class="timeline-section">
+          <div class="tl-track">
 
-        <div class="block-title">Technical Skills</div>
+            <!-- Technology Data Reply -->
+            <div class="tl-item tl-work">
+              <div class="tl-dot"></div>
+              <div class="tl-meta">
+                <span class="tl-date">2025 – Present</span>
+                <span class="tl-badge tl-badge-work">Full-time</span>
+              </div>
+              <div class="tl-head">
+                <div class="tl-logo" title="Technology Data Reply IT">
+                  <a href="https://www.reply.com/technology-reply/en" target="_blank"> 
+                  <img src="images/technology_reply.png" alt="Technology Reply Logo"
+                       onerror="this.outerHTML='<span>Reply</span>'">
+                  </a> 
+                </div>
+                <div class="tl-title-group">
+                  <div class="tl-role">Senior Computer Vision &amp; ML Engineer</div>
+                  <div class="tl-org">Technology Data Reply IT - CV BU - Milan, Italy</div>
+                </div>
+              </div>
+              <p class="tl-desc">Building production-grade CV and Deep Learning systems for aviation, security, logistics and smart operations. MLOps, Azure, Edge AI on NVIDIA Jetson.</p>
+            </div>
+
+            <!-- Technology Reply -->
+            <div class="tl-item tl-work">
+              <div class="tl-dot"></div>
+              <div class="tl-meta">
+                <span class="tl-date">2021 – 2025</span>
+                <span class="tl-badge tl-badge-work">Full-time</span>
+              </div>
+              <div class="tl-head">
+                <div class="tl-logo" title="Technology Reply IT">
+                  <a href="https://www.reply.com/en" target="_blank">
+                  <img src="images/reply.png" alt="Reply Logo"
+                       onerror="this.outerHTML='<span>Reply</span>'">
+                  </a>
+                </div>
+                <div class="tl-title-group">
+                  <div class="tl-role">ML Engineer &amp; Data Scientist</div>
+                  <div class="tl-org">Technology Reply IT - AI BU - Milan, Italy</div>
+                </div>
+              </div>
+              <p class="tl-desc">MLOps & Cloud AI Specialist with a Track Record of Client Success.</p>
+            </div>
+ 
+            <!-- Internship ManoMotion -->
+            <div class="tl-item tl-internship">
+              <div class="tl-dot"></div>
+              <div class="tl-meta">
+                <span class="tl-date">2021</span>
+                <span class="tl-badge tl-badge-intern">Internship</span>
+              </div>
+              <div class="tl-head">
+                <div class="tl-logo" title="ManoMotion">
+                  <a href="https://www.manomotion.com" target="_blank">
+                  <img src="images/manomotion.png" alt="ManoMotion Logo"
+                       onerror="this.outerHTML='<span>MM</span>'">
+                  </a>
+                </div>
+                <div class="tl-title-group">
+                  <div class="tl-role">Computer Vision Engineer</div>
+                  <div class="tl-org">ManoMotion — Stockholm, Sweden</div>
+                </div>
+              </div>
+              <p class="tl-desc">Hand gesture recognition R&amp;D at a Computer Vision startup; real-time tracking pipelines for mobile AR.</p>
+            </div>
+ 
+            <!-- Internship Xtensa -->
+            <div class="tl-item tl-internship">
+              <div class="tl-dot"></div>
+              <div class="tl-meta">
+                <span class="tl-date">2022</span>
+                <span class="tl-badge tl-badge-intern">Internship</span>
+              </div>
+              <div class="tl-head">
+                <div class="tl-logo" title="Xtensa Srl">
+                  <img src="images/xtensa.png" alt="Xtensa Logo"
+                       onerror="this.outerHTML='<span>XT</span>'">
+                </div>
+                <div class="tl-title-group">
+                  <div class="tl-role">Computer Vision Engineer</div>
+                  <div class="tl-org">Xtensa Srl — Trento, Italy</div>
+                </div>
+              </div>
+              <p class="tl-desc">Deep Learning model development and deployment for industrial computer vision applications.</p>
+            </div>
+
+            <!-- Bicocca -->
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-meta">
+                <span class="tl-date">2024</span>
+                <span class="tl-badge tl-badge-edu">Education</span>
+              </div>
+              <div class="tl-head">
+                <div class="tl-logo" title="Bicocca M2L">
+                  <a href="https://www.m2lschool.org/past-editions/m2l-2024-italy" target="_blank">
+                  <img src="images/bicocca.png" alt="M2l Logo"
+                       onerror="this.outerHTML='<span>KTH</span>'">
+                  </a>  
+                </div>
+                <div class="tl-title-group">
+                  <div class="tl-role">M2L - Mediterranean Machine Learning Summer School</div>
+                  <div class="tl-org">Bicocca University, Milan - Italy</div>
+                </div>
+              </div>
+              <p class="tl-desc">4th Edition of Mediterranean Machine Learning Summer School.</p>
+            </div>
+            
+            <!-- Abilitazione PoliMI -->
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-meta">
+                <span class="tl-date">2023</span>
+                <span class="tl-badge tl-badge-edu">Education</span>
+              </div>
+              <div class="tl-head">
+                <div class="tl-logo" title="Politecnico di Milano">
+                  <a href="https://www.polimi.it/en/" target="_blank">
+                  <img src="images/polimi.png" alt="PoliMi Logo"
+                       onerror="this.outerHTML='<span>KTH</span>'">
+                  </a>  
+                </div>
+                <div class="tl-title-group">
+                  <div class="tl-role">Abilitazione all'Albo di Ingegneria Informazione</div>
+                  <div class="tl-org">Politecnico di Milano - Italy</div>
+                </div>
+              </div>
+              <p class="tl-desc">National Italian License as Engineer Information Technology Section A 2023.</p>
+            </div>
+
+            <!-- MSc KTH + UniTN (EIT) -->
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-meta">
+                <span class="tl-date">2019 – 2022</span>
+                <span class="tl-badge tl-badge-edu">Education</span>
+              </div>
+              <div class="tl-head">
+                <div class="tl-logo" title="KTH Royal Institute of Technology">
+                  <a href="https://www.kth.se/en" target="_blank">
+                  <img src="images/kth.png" alt="KTH Logo"
+                       onerror="this.outerHTML='<span>KTH</span>'">
+                  </a>
+                </div>
+                <div class="tl-title-group">
+                  <div class="tl-role">EIT Joint MSc · Visual Computing &amp; Communication</div>
+                  <div class="tl-org">KTH Stockholm &amp; University of Trento</div>
+                </div>
+              </div>
+              <p class="tl-desc">Double degree in Computer Vision, Image Processing and Deep Learning across two European top universities.</p>
+            </div>
+
+            <!-- BSc -->
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-meta">
+                <span class="tl-date">2015 – 2019</span>
+                <span class="tl-badge tl-badge-edu">Education</span>
+              </div>
+              <div class="tl-head">
+                <div class="tl-logo" title="University of Trento">
+                  <a href="https://www.disi.unitn.it/" target="_blank"> 
+                  <img src="images/unitrento.png" alt="UniTrento Logo"
+                       onerror="this.outerHTML='<span>UniTN</span>'">
+                  </a> 
+                </div>
+                <div class="tl-title-group">
+                  <div class="tl-role">BSc Information &amp; Communications Engineering</div>
+                  <div class="tl-org">University of Trento - Italy</div>
+                </div>
+              </div>
+              <p class="tl-desc">Foundation in telecommunications, signal processing, mathematics and software engineering.</p>
+            </div>
+
+          </div>
+        </div>
+ 
+        <div id="my-skills" class="block-title">Technical Skills</div>
         <div class="skills-grid">
           <div class="skill-item">
             <div class="skill-name">Python</div>
@@ -743,20 +1093,22 @@
             <div class="bar-track"><div class="bar-fill" style="--w:0.74"></div></div>
           </div>
         </div>
-
-        <div class="block-title">Languages</div>
+ 
+        <div id="languages" class="block-title">Languages</div>
         <div class="langs-row">
           <div class="lang-card">
+            <a href="https://acrobat.adobe.com/link/track?uri=urn:aaid:scds:US:c4bb2a0f-3bcc-3d03-b6b8-de96e9ca054c" target="_blank">
             <div class="lang-name">English</div>
             <div class="lang-level">C1 · IELTS Band 8</div>
+            </a>
           </div>
           <div class="lang-card">
             <div class="lang-name">Italian</div>
             <div class="lang-level">Native speaker</div>
           </div>
         </div>
-
-        <div class="block-title">Certifications</div>
+ 
+        <a href="https://www.credly.com/users/federico-favia.7d78e58b/badges#other" target="_blank"><div id="certifications" class="block-title">Certifications</div></a>
         <div class="cert-grid">
           <a class="cert-item" href="https://learn.microsoft.com/it-it/users/federicofavia-3895/credentials/3e7c0fa4a1d207ed" target="_blank">
             <span class="cert-arrow">→</span>
@@ -769,6 +1121,10 @@
           <a class="cert-item" href="https://learn.nvidia.com/certificates?id=C0qbnTF2Qc6GF8nM-bUISA#" target="_blank">
             <span class="cert-arrow">→</span>
             <span class="cert-text">NVIDIA DLI Fundamentals of Deep Learning</span>
+          </a>
+          <a class="cert-item" href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:dfd9844b-1d9d-4d52-a607-49865a37bd2b" target="_blank">
+            <span class="cert-arrow">→</span>
+            <span class="cert-text">M2L Mediterranean Machine Learning Summer School 2024</span>
           </a>
           <a class="cert-item" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=FE497E382BE326934D682F975E80DB06662413032EC5539B1D4D5E2FE589D7AE" target="_blank">
             <span class="cert-arrow">→</span>
@@ -815,11 +1171,11 @@
             <span class="cert-text">Nova Member since 2021</span>
           </a>
         </div>
-
+ 
       </div>
     </div>
   </section>
-
+ 
   <!-- ─── FOOTER ─── -->
   <footer id="footer">
     <div class="footer-grid">
@@ -849,9 +1205,42 @@
         <ul class="footer-links">
           <li><a href="index.html">Projects</a></li>
           <li><a href="about.html">About me</a></li>
-          <li><a href="resume_files/resume_federico_favia.pdf">CV / Resume</a></li>
+          <li><a href="resume_files/resume_federico_favia.pdf">CV</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">favia96.github.io 2026
+      <span class="footer-copy">© 2025 Federico Favia — All rights reserved.</span>
+      <span class="footer-copy">Senior CV &amp; ML Engineer · Mantua, Italy</span>
+    </div>
+  </footer>
+ 
+  <script>
+    // Bio toggle
+    function toggleBio() {
+      const extra = document.getElementById('bio-extra');
+      const btn = document.getElementById('bio-toggle');
+      const label = document.getElementById('bio-toggle-label');
+      const isOpen = extra.classList.contains('open');
+      extra.classList.toggle('open', !isOpen);
+      btn.classList.toggle('open', !isOpen);
+      label.textContent = isOpen ? 'Read more' : 'Read less';
+    }
+ 
+    // Timeline scroll-in animation
+    const tlItems = document.querySelectorAll('.tl-item');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('tl-visible');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    tlItems.forEach((el, i) => {
+      el.style.transitionDelay = (i * 0.08) + 's';
+      obs.observe(el);
+    });
+  </script>
+</body>
+</html>
