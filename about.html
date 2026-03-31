@@ -190,6 +190,25 @@
       display: flex; gap: 1rem; flex-wrap: wrap;
       opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
     }
+    .skills-icons {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .skills-icons img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      filter: grayscale(100%) brightness(1.2);
+      opacity: 0.8;
+      transition: all 0.2s ease;
+    }
+    .skills-icons img:hover {
+      filter: none;
+      opacity: 1;
+      transform: scale(1.1);
+    }
     .btn {
       display: inline-flex; align-items: center; gap: 0.5rem;
       padding: 0.8rem 1.8rem;
@@ -675,6 +694,60 @@
       max-width: 560px;
     }
  
+    /* ─── TIMELINE TABS ─── */
+    .tl-tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.35rem;
+      width: fit-content;
+    }
+    .tl-tab {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.55rem 1.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 4px;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.22s ease;
+    }
+    .tl-tab:hover:not(.active) {
+      color: var(--text-dim);
+      border-color: var(--border);
+    }
+    .tl-tab.active {
+      background: var(--bg3);
+      border-color: rgba(0,229,255,0.25);
+      color: var(--accent);
+      box-shadow: 0 0 12px rgba(0,229,255,0.08);
+    }
+    #tab-academic.active {
+      border-color: rgba(124,58,237,0.3);
+      color: #a78bfa;
+      box-shadow: 0 0 12px rgba(124,58,237,0.1);
+    }
+    .tl-tab-icon { font-size: 0.7rem; }
+    .tl-panel {
+      animation: panelFadeIn 0.35s ease forwards;
+    }
+    .tl-panel-hidden {
+      display: none;
+    }
+    @keyframes panelFadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     /* ─── FOOTER ─── */
     footer {
       background: var(--bg2);
@@ -731,7 +804,15 @@
       color: var(--text-muted);
       letter-spacing: 0.08em;
     }
- 
+    a {
+      color: #9ae6ff;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #ffffff;
+    }
+
+    /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
       .nav-socials { display: none; }
@@ -777,7 +858,7 @@
     <div class="header-glow"></div>
     <div class="page-eyebrow">Who I am</div>
     <h1 class="page-title">About<br /><span>Me</span></h1>
-    <p class="page-subtitle">Senior Computer Vision &amp; ML Engineer based in Mantua, Italy. Passionate about making machines see and understand the world.</p>
+    <p class="page-subtitle">Senior Computer Vision &amp; ML Engineer based in Milan, Italy. Passionate about making machines see and understand the world.</p>
   </div> -->
  
   <section id="hero">
@@ -788,11 +869,36 @@
       <div class="hero-eyebrow">Who I am</div>
       <h1 class="hero-name">About <br /><span>Me</span></h1>
       <div class="hero-title">// Deep Learning · Computer Vision · MLOps · Azure · Edge AI</div>
-      <p class="hero-desc">Senior Computer Vision &amp; ML Engineer based in Mantua, Italy. Passionate about making machines see and understand the world.
+      <p class="hero-desc">Senior Computer Vision &amp; ML Engineer based in Milan, Italy. Passionate about making machines see and understand the world.
         <br>Expert in Deep Learning, Image Processing. Worked in aviation, security, smart operations and logistics industries &#128747 &#128230 &#128373
-        <br>Lived in Stockholm, Milan, Trento and Mantua. Speaking English and Italian, <a href="mailto:federic.fav@gmail.com" target="_blank"><span class="__cf_email__" data-cfemail="federic.fav@gmail.com">DM me</span></a> to grab a coffee! &#9749 &#128522 &#128202
+        <br>Lived in Stockholm, Milan, Trento and Mantua. Speaking English and Italian, <a href="mailto:federic.fav@gmail.com" target="_blank">DM me</a> to grab a coffee! &#9749 &#128522
+        <br>Proficient in:
       </p>
+    
+    <div class="skills-icons">
+        <img src="images/python.png" alt="Python" title="Python">
+        <img src="images/opencv.png" alt="OpenCV" title="OpenCV">
+        <img src="images/nvidia.png" alt="NVIDIA" title="NVIDIA">
+        <img src="images/docker.png" alt="Docker" title="Docker">
+        <img src="images/kubernetes.png" alt="Kubernetes" title="Kubernetes">
+        <img src="images/pytorch.png" alt="PyTorch" title="PyTorch">
+        <img src="images/azure.png" alt="Azure" title="Azure">
+        <img src="images/git.png" alt="Git" title="Git">
+        <img src="images/tensorflow.png" alt="TensorFlow" title="TensorFlow">
+        <img src="images/keras.png" alt="Keras" title="Keras">
+        <img src="images/openmmlab.png" alt="OpenMMLab" title="OpenMMLab">
+        <img src="images/yolo.png" alt="YOLO" title="YOLO">
+        <img src="images/cpp.png" alt="C++" title="C++">
+        <img src="images/ubuntu.png" alt="Ubuntu" title="Ubuntu">
+        <img src="images/bash.png" alt="Bash" title="Bash">
+        <img src="images/atlassian.png" alt="Atlassian" title="Atlassian">
+        <img src="images/vscode.png" alt="VS Code" title="VS Code">
+        <img src="images/microsoft365.png" alt="Microsoft 365" title="Microsoft 365">
+        <img src="images/axis.png" alt="Axis" title="Axis">
     </div>
+
+    </div>
+    
     <div class="hero-photo">
       <img src="images/cv_image.jpg" onerror="this.style.display='none'">
       <span class="hero-photo-label"></span>
@@ -820,7 +926,7 @@
         </div>
         <div class="sidebar-item">
           <span class="si-label">Location</span>
-          <span class="si-value">Mantua, Italy</span>
+          <span class="si-value">Milan, Italy</span>
         </div>
         <div class="sidebar-item">
           <span class="si-label">Education</span>
@@ -849,7 +955,7 @@
               <p class="bio-block" style="margin-top:1.2rem;">
                 Apart from being a tech enthusiast, I am a passionate Italian <b>telecommunications engineer</b>, with a strong focus on <b>visual data</b> and signal processing. In particular, I've specialised in <b>Computer Vision</b>, Image Processing and <b>Deep Learning</b> — but I also enjoy the <b>business</b> and innovation side.
                 <br /><br />
-                I hold an <a href="https://masterschool.eitdigital.eu/programmes/vcc/" target="_blank">EIT Joint MSc</a> in <b>Visual Computing Communication</b> from <a href="https://www.kth.se/en" target="_blank">KTH Stockholm</a> and the <a href="https://www.unitn.it/en" target="_blank">University of Trento</a>, plus a <b>BSc</b> in Information and Communications Engineering also from the University of Trento.
+                I hold an <a href="https://masterschool.eitdigital.eu/programmes/vcc/" target="_blank">EIT Joint Double MSc</a> in <b>Visual Computing Communication</b> from <a href="https://www.kth.se/en" target="_blank">KTH Stockholm</a> and the <a href="https://www.unitn.it/en" target="_blank">University of Trento</a>, plus a <b>BSc</b> in Information and Communications Engineering also from the University of Trento.
                 <br /><br />
                 I had two amazing internships at computer vision startups: <a href="https://www.manomotion.com/" target="_blank">ManoMotion</a> in Stockholm, and <a href="https://xtensa.it/" target="_blank">Xtensa Srl</a> in Trento. In my free time I love movies, theatre, and drawing — which is why I also have a design-inspired mind for visual arts. As a side project, I personally created and <a href="index.html#engel" target="_blank"> designed</a> the <a href="https://www.facebook.com/engelbottle" target="_blank">Engel Logo</a> for a Startup Lab Course at <a href="https://clabtrento.it/it" target="_blank">Clab</a>, Trento in 2019.
               </p>
@@ -863,183 +969,293 @@
  
         <div id="career-timeline" class="block-title">Career Timeline</div>
         <div class="timeline-section">
-          <div class="tl-track">
 
-            <!-- Technology Data Reply -->
-            <div class="tl-item tl-work">
-              <div class="tl-dot"></div>
-              <div class="tl-meta">
-                <span class="tl-date">2025 – Present</span>
-                <span class="tl-badge tl-badge-work">Full-time</span>
-              </div>
-              <div class="tl-head">
-                <div class="tl-logo" title="Technology Data Reply IT">
-                  <a href="https://www.reply.com/technology-reply/en" target="_blank"> 
-                  <img src="images/technology_reply.png" alt="Technology Reply Logo"
-                       onerror="this.outerHTML='<span>Reply</span>'">
-                  </a> 
-                </div>
-                <div class="tl-title-group">
-                  <div class="tl-role">Senior Computer Vision &amp; ML Engineer</div>
-                  <div class="tl-org">Technology Data Reply IT - CV BU - Milan, Italy</div>
-                </div>
-              </div>
-              <p class="tl-desc">Building production-grade CV and Deep Learning systems for aviation, security, logistics and smart operations. MLOps, Azure, Edge AI on NVIDIA Jetson.</p>
-            </div>
-
-            <!-- Technology Reply -->
-            <div class="tl-item tl-work">
-              <div class="tl-dot"></div>
-              <div class="tl-meta">
-                <span class="tl-date">2021 – 2025</span>
-                <span class="tl-badge tl-badge-work">Full-time</span>
-              </div>
-              <div class="tl-head">
-                <div class="tl-logo" title="Technology Reply IT">
-                  <a href="https://www.reply.com/en" target="_blank">
-                  <img src="images/reply.png" alt="Reply Logo"
-                       onerror="this.outerHTML='<span>Reply</span>'">
-                  </a>
-                </div>
-                <div class="tl-title-group">
-                  <div class="tl-role">ML Engineer &amp; Data Scientist</div>
-                  <div class="tl-org">Technology Reply IT - AI BU - Milan, Italy</div>
-                </div>
-              </div>
-              <p class="tl-desc">MLOps & Cloud AI Specialist with a Track Record of Client Success.</p>
-            </div>
- 
-            <!-- Internship ManoMotion -->
-            <div class="tl-item tl-internship">
-              <div class="tl-dot"></div>
-              <div class="tl-meta">
-                <span class="tl-date">2021</span>
-                <span class="tl-badge tl-badge-intern">Internship</span>
-              </div>
-              <div class="tl-head">
-                <div class="tl-logo" title="ManoMotion">
-                  <a href="https://www.manomotion.com" target="_blank">
-                  <img src="images/manomotion.png" alt="ManoMotion Logo"
-                       onerror="this.outerHTML='<span>MM</span>'">
-                  </a>
-                </div>
-                <div class="tl-title-group">
-                  <div class="tl-role">Computer Vision Engineer</div>
-                  <div class="tl-org">ManoMotion — Stockholm, Sweden</div>
-                </div>
-              </div>
-              <p class="tl-desc">Hand gesture recognition R&amp;D at a Computer Vision startup; real-time tracking pipelines for mobile AR.</p>
-            </div>
- 
-            <!-- Internship Xtensa -->
-            <div class="tl-item tl-internship">
-              <div class="tl-dot"></div>
-              <div class="tl-meta">
-                <span class="tl-date">2022</span>
-                <span class="tl-badge tl-badge-intern">Internship</span>
-              </div>
-              <div class="tl-head">
-                <div class="tl-logo" title="Xtensa Srl">
-                  <img src="images/xtensa.png" alt="Xtensa Logo"
-                       onerror="this.outerHTML='<span>XT</span>'">
-                </div>
-                <div class="tl-title-group">
-                  <div class="tl-role">Computer Vision Engineer</div>
-                  <div class="tl-org">Xtensa Srl — Trento, Italy</div>
-                </div>
-              </div>
-              <p class="tl-desc">Deep Learning model development and deployment for industrial computer vision applications.</p>
-            </div>
-
-            <!-- Bicocca -->
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-meta">
-                <span class="tl-date">2024</span>
-                <span class="tl-badge tl-badge-edu">Education</span>
-              </div>
-              <div class="tl-head">
-                <div class="tl-logo" title="Bicocca M2L">
-                  <a href="https://www.m2lschool.org/past-editions/m2l-2024-italy" target="_blank">
-                  <img src="images/bicocca.png" alt="M2l Logo"
-                       onerror="this.outerHTML='<span>KTH</span>'">
-                  </a>  
-                </div>
-                <div class="tl-title-group">
-                  <div class="tl-role">M2L - Mediterranean Machine Learning Summer School</div>
-                  <div class="tl-org">Bicocca University, Milan - Italy</div>
-                </div>
-              </div>
-              <p class="tl-desc">4th Edition of Mediterranean Machine Learning Summer School.</p>
-            </div>
-            
-            <!-- Abilitazione PoliMI -->
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-meta">
-                <span class="tl-date">2023</span>
-                <span class="tl-badge tl-badge-edu">Education</span>
-              </div>
-              <div class="tl-head">
-                <div class="tl-logo" title="Politecnico di Milano">
-                  <a href="https://www.polimi.it/en/" target="_blank">
-                  <img src="images/polimi.png" alt="PoliMi Logo"
-                       onerror="this.outerHTML='<span>KTH</span>'">
-                  </a>  
-                </div>
-                <div class="tl-title-group">
-                  <div class="tl-role">Abilitazione all'Albo di Ingegneria Informazione</div>
-                  <div class="tl-org">Politecnico di Milano - Italy</div>
-                </div>
-              </div>
-              <p class="tl-desc">National Italian License as Engineer Information Technology Section A 2023.</p>
-            </div>
-
-            <!-- MSc KTH + UniTN (EIT) -->
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-meta">
-                <span class="tl-date">2019 – 2022</span>
-                <span class="tl-badge tl-badge-edu">Education</span>
-              </div>
-              <div class="tl-head">
-                <div class="tl-logo" title="KTH Royal Institute of Technology">
-                  <a href="https://www.kth.se/en" target="_blank">
-                  <img src="images/kth.png" alt="KTH Logo"
-                       onerror="this.outerHTML='<span>KTH</span>'">
-                  </a>
-                </div>
-                <div class="tl-title-group">
-                  <div class="tl-role">EIT Joint MSc · Visual Computing &amp; Communication</div>
-                  <div class="tl-org">KTH Stockholm &amp; University of Trento</div>
-                </div>
-              </div>
-              <p class="tl-desc">Double degree in Computer Vision, Image Processing and Deep Learning across two European top universities.</p>
-            </div>
-
-            <!-- BSc -->
-            <div class="tl-item">
-              <div class="tl-dot"></div>
-              <div class="tl-meta">
-                <span class="tl-date">2015 – 2019</span>
-                <span class="tl-badge tl-badge-edu">Education</span>
-              </div>
-              <div class="tl-head">
-                <div class="tl-logo" title="University of Trento">
-                  <a href="https://www.disi.unitn.it/" target="_blank"> 
-                  <img src="images/unitrento.png" alt="UniTrento Logo"
-                       onerror="this.outerHTML='<span>UniTN</span>'">
-                  </a> 
-                </div>
-                <div class="tl-title-group">
-                  <div class="tl-role">BSc Information &amp; Communications Engineering</div>
-                  <div class="tl-org">University of Trento - Italy</div>
-                </div>
-              </div>
-              <p class="tl-desc">Foundation in telecommunications, signal processing, mathematics and software engineering.</p>
-            </div>
-
+          <!-- ─── TAB SWITCHER ─── -->
+          <div class="tl-tabs">
+            <button class="tl-tab active" id="tab-career" onclick="switchTab('career')">
+              <span class="tl-tab-icon">◈</span> Career
+            </button>
+            <button class="tl-tab" id="tab-academic" onclick="switchTab('academic')">
+              <span class="tl-tab-icon">◉</span> Academic
+            </button>
           </div>
+
+          <!-- ─── CAREER PANEL ─── -->
+          <div class="tl-panel" id="panel-career">
+            <div class="tl-track">
+
+              <!-- Technology Data Reply -->
+              <div class="tl-item tl-work">
+                <div class="tl-dot"></div>
+                <div class="tl-meta">
+                  <span class="tl-date">2025 – Present</span>
+                  <span class="tl-badge tl-badge-work">Full-time</span>
+                </div>
+                <div class="tl-head">
+                  <div class="tl-logo" title="Technology Data Reply IT">
+                    <a href="https://www.reply.com/technology-reply/en" target="_blank">
+                    <img src="images/technology_reply.png" alt="Technology Reply Logo"
+                         onerror="this.outerHTML='<span>Reply</span>'">
+                    </a>
+                  </div>
+                  <div class="tl-title-group">
+                    <div class="tl-role">Senior Computer Vision &amp; ML Engineer</div>
+                    <div class="tl-org">Technology Data Reply IT - CV BU - Milan, Italy</div>
+                  </div>
+                </div>
+                <p class="tl-desc">Building production-grade CV and Deep Learning systems for aviation, security, logistics and smart operations. MLOps, Azure, Edge AI on NVIDIA Jetson.</p>
+              </div>
+
+              <!-- Technology Reply -->
+              <div class="tl-item tl-work">
+                <div class="tl-dot"></div>
+                <div class="tl-meta">
+                  <span class="tl-date">2021 – 2025</span>
+                  <span class="tl-badge tl-badge-work">Full-time</span>
+                </div>
+                <div class="tl-head">
+                  <div class="tl-logo" title="Technology Reply IT">
+                    <a href="https://www.reply.com/en" target="_blank">
+                    <img src="images/reply.png" alt="Reply Logo"
+                         onerror="this.outerHTML='<span>Reply</span>'">
+                    </a>
+                  </div>
+                  <div class="tl-title-group">
+                    <div class="tl-role">ML Engineer &amp; Data Scientist</div>
+                    <div class="tl-org">Technology Reply IT - AI BU - Milan, Italy</div>
+                  </div>
+                </div>
+                <p class="tl-desc">MLOps & Cloud AI Specialist with a Track Record of Client Success.</p>
+              </div>
+
+              <!-- Internship ManoMotion -->
+              <div class="tl-item tl-internship">
+                <div class="tl-dot"></div>
+                <div class="tl-meta">
+                  <span class="tl-date">2021</span>
+                  <span class="tl-badge tl-badge-intern">Internship</span>
+                </div>
+                <div class="tl-head">
+                  <div class="tl-logo" title="ManoMotion">
+                    <a href="https://www.manomotion.com" target="_blank">
+                    <img src="images/manomotion.png" alt="ManoMotion Logo"
+                         onerror="this.outerHTML='<span>MM</span>'">
+                    </a>
+                  </div>
+                  <div class="tl-title-group">
+                    <div class="tl-role">Computer Vision Engineer</div>
+                    <div class="tl-org">ManoMotion — Stockholm, Sweden</div>
+                  </div>
+                </div>
+                <p class="tl-desc">Hand gesture recognition R&amp;D at CV startup; real-time tracking pipelines for mobile AR.</p>
+              </div>
+
+              <!-- Internship Xtensa -->
+              <div class="tl-item tl-internship">
+                <div class="tl-dot"></div>
+                <div class="tl-meta">
+                  <span class="tl-date">2022</span>
+                  <span class="tl-badge tl-badge-intern">Internship</span>
+                </div>
+                <div class="tl-head">
+                  <div class="tl-logo" title="Xtensa Srl">
+                    <img src="images/xtensa.png" alt="Xtensa Logo"
+                         onerror="this.outerHTML='<span>XT</span>'">
+                  </div>
+                  <div class="tl-title-group">
+                    <div class="tl-role">Computer Vision Engineer</div>
+                    <div class="tl-org">Xtensa Srl — Trento, Italy</div>
+                  </div>
+                </div>
+                <p class="tl-desc">Deep Learning model development and deployment for industrial computer vision applications.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ─── ACADEMIC PANEL ─── -->
+          <div class="tl-panel tl-panel-hidden" id="panel-academic">
+            <div class="tl-track">
+
+              <!-- Bicocca M2L -->
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-meta">
+                  <span class="tl-date">2024</span>
+                  <span class="tl-badge tl-badge-edu">Education</span>
+                </div>
+                <div class="tl-head">
+                  <div class="tl-logo" title="Bicocca M2L">
+                    <a href="https://www.m2lschool.org/past-editions/m2l-2024-italy" target="_blank">
+                    <img src="images/bicocca.png" alt="M2l Logo"
+                         onerror="this.outerHTML='<span>M2L</span>'">
+                    </a>
+                  </div>
+                  <div class="tl-title-group">
+                    <div class="tl-role">M2L - Mediterranean Machine Learning Summer School</div>
+                    <div class="tl-org">Bicocca University, Milan - Italy</div>
+                  </div>
+                </div>
+                <p class="tl-desc">4th Edition of Mediterranean Machine Learning Summer School.</p>
+              </div>
+
+              <!-- Abilitazione PoliMI -->
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-meta">
+                  <span class="tl-date">2023</span>
+                  <span class="tl-badge tl-badge-edu">Education</span>
+                </div>
+                <div class="tl-head">
+                  <div class="tl-logo" title="Politecnico di Milano">
+                    <a href="https://www.polimi.it/en/" target="_blank">
+                    <img src="images/polimi.png" alt="PoliMi Logo"
+                         onerror="this.outerHTML='<span>PoliMi</span>'">
+                    </a>
+                  </div>
+                  <div class="tl-title-group">
+                    <div class="tl-role">Abilitazione all'Albo di Ingegneria Informazione</div>
+                    <div class="tl-org">Politecnico di Milano - Italy</div>
+                  </div>
+                </div>
+                <p class="tl-desc">National Italian License as Engineer Information Technology Section A 2023.</p>
+              </div>
+
+              <!-- School of innovation Trento -->
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-meta">
+                  <span class="tl-date">2021</span>
+                  <span class="tl-badge tl-badge-edu">Education</span>
+                </div>
+                <div class="tl-head">
+                  <div class="tl-logo" title="School of Innovation Trento">
+                    <a href="https://www.soi.unitn.it/" target="_blank">
+                    <img src="images/soi.png" alt="SOI Logo"
+                         onerror="this.outerHTML='<span>SOI</span>'">
+                    </a>
+                  </div>
+                  <div class="tl-title-group">
+                    <div class="tl-role">School of Innovation CLAB Trento</div>
+                    <div class="tl-org">University of Trento - Italy</div>
+                  </div>
+                </div>
+                <p class="tl-desc">Interdepartmental structure on innovation, entrepreneurship and innovative education.</p>
+              </div>
+
+              <!-- MSc KTH -->
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-meta">
+                  <span class="tl-date">2019 – 2021</span>
+                  <span class="tl-badge tl-badge-edu">Education</span>
+                </div>
+                <div class="tl-head">
+                  <div class="tl-logo" title="KTH Royal Institute of Technology">
+                    <a href="https://www.kth.se/en" target="_blank">
+                    <img src="images/kth.png" alt="KTH Logo"
+                         onerror="this.outerHTML='<span>KTH</span>'">
+                    </a>
+                  </div>
+                  <div class="tl-title-group">
+                    <div class="tl-role">MSc Electrical Engineering, Grade A</div>
+                    <div class="tl-org">KTH Stockholm - Sweden</div>
+                  </div>
+                </div>
+                <p class="tl-desc">Master's degree in Computer Vision, Electrical Engineering and Image Processing.</p>
+              </div>
+
+              <!-- Summer School -->
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-meta">
+                  <span class="tl-date">2019</span>
+                  <span class="tl-badge tl-badge-edu">Education</span>
+                </div>
+                <div class="tl-head">
+                  <div class="tl-logo" title="EIT Summer Aalto">
+                    <a href="https://www.aalto.fi/en" target="_blank">
+                    <img src="images/aalto.png" alt="Aalto Logo"
+                         onerror="this.outerHTML='<span>UniTN</span>'">
+                    </a>
+                  </div>
+                  <div class="tl-title-group">
+                    <div class="tl-role">EIT Helsinki Summer School Disrupting Digital Retail</div>
+                    <div class="tl-org">Aalto University Helsinki - Finland</div>
+                  </div>
+                </div>
+                <p class="tl-desc">EIT Summer School 2019: Disrupting Retail - Digitalisation, Growth and User Engagement.</p>
+              </div>
+
+              <!-- MSc Unitn -->
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-meta">
+                  <span class="tl-date">2018 – 2021</span>
+                  <span class="tl-badge tl-badge-edu">Education</span>
+                </div>
+                <div class="tl-head">
+                  <div class="tl-logo" title="University of Trento">
+                    <a href="https://www.disi.unitn.it/" target="_blank">
+                    <img src="images/unitrento.png" alt="UniTrento Logo"
+                         onerror="this.outerHTML='<span>UniTN</span>'">
+                    </a>
+                  </div>
+                  <div class="tl-title-group">
+                    <div class="tl-role">MSc Information &amp; Communications Engineering, 110 Honors/110</div>
+                    <div class="tl-org">University of Trento - Italy</div>
+                  </div>
+                </div>
+                <p class="tl-desc">Master's degree in Digital Signal Processing, Pattern Recognition and Computer Vision Engineering.</p>
+              </div>
+
+              <!-- MSc EIT -->
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-meta">
+                  <span class="tl-date">2018 – 2021</span>
+                  <span class="tl-badge tl-badge-edu">Education</span>
+                </div>
+                <div class="tl-head">
+                  <div class="tl-logo" title="University of Trento">
+                    <a href="https://28digital.eu/digital-skills-entrepreneurship" target="_blank">
+                    <img src="images/eit.png" alt="Eit Logo"
+                         onerror="this.outerHTML='<span>UniTN</span>'">
+                    </a>
+                  </div>
+                  <div class="tl-title-group">
+                    <div class="tl-role">EIT Double  MSc Visual Computing & Communication</div>
+                    <div class="tl-org">EIT Digital Master School - KTH Stockholm & University of Trento</div>
+                  </div>
+                </div>
+                <p class="tl-desc">Minor in Innovation  &amp Entrepreneurship. Double degree in Computer Vision, Image Processing and Deep Learning across two European top universities, with focus on digital innovation, business models and startups.</p>
+              </div>
+              
+              <!-- BSc -->
+              <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-meta">
+                  <span class="tl-date">2015 – 2018</span>
+                  <span class="tl-badge tl-badge-edu">Education</span>
+                </div>
+                <div class="tl-head">
+                  <div class="tl-logo" title="University of Trento">
+                    <a href="https://www.disi.unitn.it/" target="_blank">
+                    <img src="images/unitrento.png" alt="UniTrento Logo"
+                         onerror="this.outerHTML='<span>UniTN</span>'">
+                    </a>
+                  </div>
+                  <div class="tl-title-group">
+                    <div class="tl-role">BSc Telecommunications Engineering, 105/110</div>
+                    <div class="tl-org">University of Trento - Italy</div>
+                  </div>
+                </div>
+                <p class="tl-desc">Basics in telecommunications, signal processing, mathematics and software engineering.</p>
+              </div>
+
+            </div>
+          </div>
+
         </div>
  
         <div id="my-skills" class="block-title">Technical Skills</div>
@@ -1190,13 +1406,13 @@
       <div>
         <div class="footer-col-title">Location</div>
         <ul class="footer-links">
-          <li><span style="font-size:0.82rem;color:var(--text-dim);">Mantua, Italy</span></li>
+          <li><span style="font-size:0.82rem;color:var(--text-dim);">Milan, Italy</span></li>
         </ul>
       </div>
       <div>
         <div class="footer-col-title">Contact</div>
         <ul class="footer-links">
-          <li><a href="mailto:federic.fav@gmail.com"><span class="__cf_email__" data-cfemail="federic.fav@gmail.com">federic.fav@gmail.com</span></a></li>
+          <li><a href="mailto:federic.fav@gmail.com">federic.fav@gmail.com</a></li>
           <li><a href="tel:+393465759669">+39 346 5759669</a></li>
         </ul>
       </div>
@@ -1211,23 +1427,43 @@
     </div>
     <div class="footer-bottom">
       <span class="footer-copy">© 2025 Federico Favia — All rights reserved.</span>
-      <span class="footer-copy">Senior CV &amp; ML Engineer · Mantua, Italy</span>
+      <span class="footer-copy">Senior CV &amp; ML Engineer · Milan, Italy</span>
     </div>
   </footer>
  
-  <script>
-    // Bio toggle
+    <script>
+    // ─── Tab switch ───
+    function switchTab(tab) {
+      document.querySelectorAll('.tl-panel').forEach(p => {
+        p.classList.add('tl-panel-hidden');
+        p.classList.remove('tl-panel');
+      });
+      document.querySelectorAll('.tl-tab').forEach(t => t.classList.remove('active'));
+      const activePanel = document.getElementById('panel-' + tab);
+      const activeTab   = document.getElementById('tab-' + tab);
+      activePanel.classList.remove('tl-panel-hidden');
+      activePanel.classList.add('tl-panel');
+      activeTab.classList.add('active');
+      activePanel.querySelectorAll('.tl-item').forEach(item => item.classList.remove('tl-visible'));
+      setTimeout(() => {
+        activePanel.querySelectorAll('.tl-item').forEach((item, i) => {
+          setTimeout(() => item.classList.add('tl-visible'), i * 80);
+        });
+      }, 20);
+    }
+
+    // ─── Bio toggle ───
     function toggleBio() {
       const extra = document.getElementById('bio-extra');
-      const btn = document.getElementById('bio-toggle');
+      const btn   = document.getElementById('bio-toggle');
       const label = document.getElementById('bio-toggle-label');
       const isOpen = extra.classList.contains('open');
       extra.classList.toggle('open', !isOpen);
       btn.classList.toggle('open', !isOpen);
       label.textContent = isOpen ? 'Read more' : 'Read less';
     }
- 
-    // Timeline scroll-in animation
+
+    // ─── Timeline scroll-in animation ───
     const tlItems = document.querySelectorAll('.tl-item');
     const obs = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
@@ -1237,10 +1473,7 @@
         }
       });
     }, { threshold: 0.15 });
-    tlItems.forEach((el, i) => {
-      el.style.transitionDelay = (i * 0.08) + 's';
-      obs.observe(el);
-    });
+    tlItems.forEach(item => obs.observe(item));
   </script>
 </body>
 </html>

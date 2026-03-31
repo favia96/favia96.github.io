@@ -191,6 +191,25 @@
       display: flex; gap: 1rem; flex-wrap: wrap;
       opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
     }
+    .skills-icons {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .skills-icons img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      filter: grayscale(100%) brightness(1.2);
+      opacity: 0.8;
+      transition: all 0.2s ease;
+    }
+    .skills-icons img:hover {
+      filter: none;
+      opacity: 1;
+      transform: scale(1.1);
+    }
     .btn {
       display: inline-flex; align-items: center; gap: 0.5rem;
       padding: 0.8rem 1.8rem;
@@ -650,6 +669,13 @@
       color: var(--text-muted);
       letter-spacing: 0.08em;
     }
+    a {
+      color: #9ae6ff;
+      text-decoration: none;
+    }
+    a:hover {
+      color: #ffffff;
+    }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
@@ -701,7 +727,30 @@
       <div class="hero-eyebrow">Senior Computer Vision &amp; ML Engineer</div>
       <h1 class="hero-name">Federico<br /><span>Favia</span></h1>
       <div class="hero-title">// Deep Learning · Computer Vision · MLOps · Azure · Edge AI</div>
-      <p class="hero-desc">Building innovative solutions for complex visual problems, from object detection pipelines to production cloud and edge deployment. Currently Lead CV Engineer at Technology Data Reply IT, Milan.</p>
+      <p class="hero-desc">Building innovative solutions for complex visual problems, from object detection pipelines to production cloud and edge deployment. Currently Lead CV Engineer at Technology Data Reply IT, Milan. <a href="mailto:federic.fav@gmail.com" target="_blank">DM me</a> to grab a coffee! &#9749 &#128522 <br>Proficient in:</p>
+
+      <div class="skills-icons">
+        <img src="images/python.png" alt="Python" title="Python">
+        <img src="images/opencv.png" alt="OpenCV" title="OpenCV">
+        <img src="images/nvidia.png" alt="NVIDIA" title="NVIDIA">
+        <img src="images/docker.png" alt="Docker" title="Docker">
+        <img src="images/kubernetes.png" alt="Kubernetes" title="Kubernetes">
+        <img src="images/pytorch.png" alt="PyTorch" title="PyTorch">
+        <img src="images/azure.png" alt="Azure" title="Azure">
+        <img src="images/git.png" alt="Git" title="Git">
+        <img src="images/tensorflow.png" alt="TensorFlow" title="TensorFlow">
+        <img src="images/keras.png" alt="Keras" title="Keras">
+        <img src="images/openmmlab.png" alt="OpenMMLab" title="OpenMMLab">
+        <img src="images/yolo.png" alt="YOLO" title="YOLO">
+        <img src="images/cpp.png" alt="C++" title="C++">
+        <img src="images/ubuntu.png" alt="Ubuntu" title="Ubuntu">
+        <img src="images/bash.png" alt="Bash" title="Bash">
+        <img src="images/atlassian.png" alt="Atlassian" title="Atlassian">
+        <img src="images/vscode.png" alt="VS Code" title="VS Code">
+        <img src="images/microsoft365.png" alt="Microsoft 365" title="Microsoft 365">
+        <img src="images/axis.png" alt="Axis" title="Axis">
+      </div>
+      <br>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="about.html">About me</a>
         <a class="btn btn-outline" href="https://github.com/favia96?tab=repositories" target="_blank">GitHub Repos ↗</a>
@@ -889,7 +938,7 @@
       <div>
         <div class="footer-col-title">Location</div>
         <ul class="footer-links">
-          <li><span style="font-size:0.82rem;color:var(--text-dim);">Mantua, Italy</span></li>
+          <li><span style="font-size:0.82rem;color:var(--text-dim);">Milan, Italy</span></li>
         </ul>
       </div>
       <div>
