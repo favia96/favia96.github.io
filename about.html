@@ -7,832 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
-    :root {
-      --bg: #090c10;
-      --bg2: #0e1318;
-      --bg3: #141b22;
-      --accent: #00e5ff;
-      --accent2: #7c3aed;
-      --accent3: #f59e0b;
-      --text: #e2e8f0;
-      --text-muted: #64748b;
-      --text-dim: #94a3b8;
-      --border: rgba(255,255,255,0.07);
-      --card: #0d1117;
-      --font-display: 'Syne', sans-serif;
-      --font-mono: 'Space Mono', monospace;
-    }
- 
-    html { scroll-behavior: smooth; }
- 
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-display);
-      overflow-x: hidden;
-    }
- 
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
- 
-    /* ─── NAV ─── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.2rem 3rem;
-      background: rgba(9,12,16,0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--accent);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.75rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-    .nav-socials { display: flex; gap: 1rem; }
-    .nav-socials a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.7rem;
-      font-family: var(--font-mono);
-      letter-spacing: 0.08em;
-      transition: color 0.2s;
-    }
-    .nav-socials a:hover { color: var(--accent); }
- 
-    /* ─── HERO ─── */
-    #hero {
-      min-height: 30vh;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      padding: 8rem 3rem 4rem;
-      position: relative;
-      overflow: hidden;
-      gap: 4rem;
-    }
-    .hero-text { display: flex; flex-direction: column; }
-    .hero-photo {
-      width: 360px;
-      height: 380px;
-      flex-shrink: 0;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      position: relative;
-      opacity: 0;
-      animation: fadeUp 0.9s 0.9s forwards;
-    }
-    .hero-photo::before {
-      content: '';
-      position: absolute; inset: 0; z-index: 1;
-      background: linear-gradient(to bottom, transparent 55%, rgba(9,12,16,0.75));
-      pointer-events: none;
-    }
-    .hero-photo img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .hero-photo-label {
-      position: absolute;
-      bottom: 1rem; left: 1rem; z-index: 2;
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      color: rgba(255,255,255,0.6);
-    }
-    .hero-grid-bg {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-    }
-    .hero-glow {
-      position: absolute;
-      width: 600px; height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,229,255,0.06) 0%, transparent 70%);
-      top: 10%; right: -100px;
-      pointer-events: none;
-      animation: pulse-glow 6s ease-in-out infinite;
-    }
-    .hero-glow2 {
-      position: absolute;
-      width: 400px; height: 400px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%);
-      bottom: 10%; left: -80px;
-      pointer-events: none;
-      animation: pulse-glow 8s ease-in-out infinite reverse;
-    }
-    @keyframes pulse-glow {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.1); opacity: 0.7; }
-    }
-    .hero-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
-    }
-    .hero-eyebrow::before {
-      content: '▸ ';
-    }
-    .hero-name {
-      font-size: clamp(3.5rem, 9vw, 8rem);
-      font-weight: 800;
-      line-height: 0.9;
-      letter-spacing: -0.03em;
-      margin-bottom: 1rem;
-      opacity: 0; animation: fadeUp 0.8s 0.35s forwards;
-    }
-    .hero-name span { color: var(--accent); }
-    .hero-title {
-      font-family: var(--font-mono);
-      font-size: clamp(0.85rem, 1.5vw, 1.1rem);
-      color: var(--text-dim);
-      letter-spacing: 0.05em;
-      margin-bottom: 2.5rem;
-      opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
-    }
-    .hero-desc {
-      max-width: 1050px;
-      font-size: 1rem;
-      line-height: 1.8;
-      color: var(--text-dim);
-      margin-bottom: 3rem;
-      opacity: 0; animation: fadeUp 0.8s 0.65s forwards;
-    }
-    .hero-ctas {
-      display: flex; gap: 1rem; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp 0.8s 0.8s forwards;
-    }
-    .skills-icons {
-      display: flex;
-      gap: 12px;
-      align-items: center;
-      flex-wrap: wrap;
-    }
-    .skills-icons img {
-      width: 28px;
-      height: 28px;
-      object-fit: contain;
-      filter: grayscale(100%) brightness(1.2);
-      opacity: 0.8;
-      transition: all 0.2s ease;
-    }
-    .skills-icons img:hover {
-      filter: none;
-      opacity: 1;
-      transform: scale(1.1);
-    }
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.8rem 1.8rem;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 3px;
-      transition: all 0.2s;
-      cursor: pointer;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: var(--bg);
-      border: 1px solid var(--accent);
-    }
-    .btn-primary:hover { background: transparent; color: var(--accent); }
-    .btn-outline {
-      background: transparent;
-      color: var(--text-dim);
-      border: 1px solid var(--border);
-    }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
-    .hero-scroll-indicator {
-      position: absolute; bottom: 2rem; left: 3rem;
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      color: var(--text-muted);
-      display: flex; align-items: center; gap: 0.75rem;
-      opacity: 0; animation: fadeUp 0.8s 1.1s forwards;
-    }
-    .scroll-line {
-      width: 40px; height: 1px;
-      background: var(--text-muted);
-      animation: expand-line 2s 1.5s ease-out forwards;
-      transform-origin: left;
-      transform: scaleX(0);
-    }
-    @keyframes expand-line { to { transform: scaleX(1); } }
- 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
- 
-    /* ─── PAGE HEADER ─── */
-    .page-header {
-      padding: 9rem 3rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .header-grid-bg {
-      position: absolute; inset: 0;
-      background-image:
-        linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
-      background-size: 60px 60px;
-      pointer-events: none;
-    }
-    .header-glow {
-      position: absolute;
-      width: 500px; height: 500px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 70%);
-      top: -100px; right: -50px;
-      pointer-events: none;
-    }
-    .page-eyebrow {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 1.2rem;
-      opacity: 0; animation: fadeUp 0.7s 0.2s forwards;
-    }
-    .page-eyebrow::before { content: '▸ '; }
-    .page-title {
-      font-size: clamp(3rem, 7vw, 6.5rem);
-      font-weight: 800;
-      line-height: 0.92;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.5rem;
-      opacity: 0; animation: fadeUp 0.7s 0.35s forwards;
-    }
-    .page-title span { color: var(--accent); }
-    .page-subtitle {
-      font-size: 1rem;
-      color: var(--text-dim);
-      max-width: 500px;
-      line-height: 1.7;
-      opacity: 0; animation: fadeUp 0.7s 0.5s forwards;
-    }
- 
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
- 
-    .divider { height: 1px; background: var(--border); margin: 0 3rem; }
- 
-    /* ─── ABOUT BODY ─── */
-    .about-section { padding: 5rem 3rem; }
-    .about-grid {
-      display: grid;
-      grid-template-columns: 340px 1fr;
-      gap: 5rem;
-      align-items: start;
-    }
-    .about-sidebar { position: sticky; top: 5rem; }
-    .profile-frame {
-      width: 100%;
-      aspect-ratio: 1 / 1.1;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.5rem;
-      overflow: hidden;
-      position: relative;
-    }
-    .profile-frame img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-    }
-    .profile-frame::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, rgba(9,12,16,0.7));
-      z-index: 1;
-      pointer-events: none;
-    }
-    .profile-placeholder {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
-    }
-    .sidebar-item {
-      display: flex; justify-content: space-between; align-items: baseline;
-      padding: 0.75rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .si-label {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-    .si-value {
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text);
-      text-align: right;
-    }
-    .sidebar-ctas { margin-top: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border-radius: 3px;
-      transition: all 0.2s;
-      text-align: center;
-    }
-    .btn-primary { background: var(--accent); color: var(--bg); border: 1px solid var(--accent); }
-    .btn-primary:hover { background: transparent; color: var(--accent); }
-    .btn-outline { background: transparent; color: var(--text-dim); border: 1px solid var(--border); }
-    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
- 
-    /* ─── BIO ─── */
-    .bio-grid {
-      display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 3rem;
-      align-items: start;
-      margin-bottom: 3.5rem;
-    }
-    .bio-cv-image {
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      position: sticky;
-      top: 5.5rem;
-    }
-    .bio-cv-image img {
-      width: 100%; height: auto;
-      display: block;
-      opacity: 0.9;
-    }
-    .bio-cv-image-placeholder {
-      width: 100%;
-      height: 260px;
-      background: var(--bg3);
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.75rem;
-      background: linear-gradient(135deg, rgba(0,229,255,0.06) 0%, rgba(124,58,237,0.06) 100%);
-    }
-    .bio-cv-image-placeholder svg { opacity: 0.3; }
-    .bio-cv-image-label {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
-      padding: 0.75rem;
-      text-align: center;
-      border-top: 1px solid var(--border);
-      background: var(--bg2);
-    }
-    .bio-block {
-      font-size: 0.92rem;
-      line-height: 1.9;
-      color: var(--text-dim);
-    }
-    .bio-block b { color: var(--text); font-weight: 600; }
-    .bio-block a { color: var(--accent); text-decoration: none; }
-    .bio-block a:hover { opacity: 0.8; }
- 
-    /* ─── BIO COLLAPSIBLE ─── */
-    .bio-collapsed { display: none; }
-    .bio-teaser { margin-bottom: 0; }
-    .bio-expanded .bio-teaser { margin-bottom: 0; }
-    .bio-toggle {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      margin-top: 1rem;
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 0;
-      transition: opacity 0.2s;
-    }
-    .bio-toggle:hover { opacity: 0.7; }
-    .bio-toggle-arrow {
-      display: inline-block;
-      transition: transform 0.3s ease;
-    }
-    .bio-toggle.open .bio-toggle-arrow { transform: rotate(180deg); }
-    .bio-collapsed {
-      overflow: hidden;
-      max-height: 0;
-      opacity: 0;
-      transition: max-height 0.4s ease, opacity 0.35s ease;
-    }
-    .bio-collapsed.open {
-      display: block;
-      max-height: 600px;
-      opacity: 1;
-    }
- 
-    /* ─── SKILLS ─── */
-    .block-title {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.25em;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      display: flex; align-items: center; gap: 0.5rem;
-    }
-    .block-title::before { content: '//'; opacity: 0.4; }
-    .skills-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-      margin-bottom: 3.5rem;
-    }
-    .skill-item {
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 0.75rem 1rem;
-      transition: border-color 0.2s;
-    }
-    .skill-item:hover { border-color: rgba(0,229,255,0.2); }
-    .skill-name {
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-    }
-    .bar-track {
-      height: 2px;
-      background: rgba(255,255,255,0.06);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-    .bar-fill {
-      height: 100%;
-      border-radius: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--accent2));
-      transform-origin: left;
-      animation: fillBar 1.1s ease-out forwards;
-      transform: scaleX(0);
-      width: var(--w, 1);
-    }
-    @keyframes fillBar { to { transform: scaleX(var(--w, 1)); } }
-    .skill-item:nth-child(1) .bar-fill { animation-delay: 0.05s; }
-    .skill-item:nth-child(2) .bar-fill { animation-delay: 0.1s; }
-    .skill-item:nth-child(3) .bar-fill { animation-delay: 0.15s; }
-    .skill-item:nth-child(4) .bar-fill { animation-delay: 0.2s; }
-    .skill-item:nth-child(5) .bar-fill { animation-delay: 0.25s; }
-    .skill-item:nth-child(6) .bar-fill { animation-delay: 0.3s; }
-    .skill-item:nth-child(7) .bar-fill { animation-delay: 0.35s; }
-    .skill-item:nth-child(8) .bar-fill { animation-delay: 0.4s; }
-    .skill-item:nth-child(9) .bar-fill { animation-delay: 0.45s; }
-    .skill-item:nth-child(10) .bar-fill { animation-delay: 0.5s; }
-    .skill-item:nth-child(11) .bar-fill { animation-delay: 0.55s; }
-    .skill-item:nth-child(12) .bar-fill { animation-delay: 0.6s; }
- 
-    /* ─── LANGUAGES ─── */
-    .langs-row {
-      display: flex; gap: 1rem; flex-wrap: wrap;
-      margin-bottom: 3.5rem;
-    }
-    .lang-card {
-      flex: 1; min-width: 200px;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1.25rem 1.5rem;
-    }
-    .lang-name { font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem; }
-    .lang-level {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-    }
- 
-    /* ─── CERTIFICATES ─── */
-    .cert-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.5rem;
-    }
-    .cert-item {
-      display: flex; align-items: center; gap: 0.6rem;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      padding: 0.65rem 0.9rem;
-      text-decoration: none;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .cert-item:hover { border-color: rgba(0,229,255,0.25); transform: translateX(2px); }
-    .cert-arrow {
-      color: var(--accent);
-      font-size: 0.7rem;
-      flex-shrink: 0;
-    }
-    .cert-text {
-      font-size: 0.75rem;
-      color: var(--text-dim);
-      line-height: 1.3;
-    }
- 
-    /* ─── TIMELINE ─── */
-    .timeline-section {
-      margin-bottom: 3.5rem;
-    }
-    .tl-track {
-      position: relative;
-      padding-left: 2.5rem;
-    }
-    .tl-track::before {
-      content: '';
-      position: absolute;
-      left: 6px;
-      top: 8px;
-      bottom: 8px;
-      width: 1px;
-      background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
-      opacity: 0.35;
-    }
-    .tl-item {
-      position: relative;
-      padding-bottom: 2.5rem;
-      opacity: 0;
-      transform: translateX(-10px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    .tl-item.tl-visible {
-      opacity: 1;
-      transform: translateX(0);
-    }
-    .tl-item:last-child { padding-bottom: 0; }
-    .tl-dot {
-      position: absolute;
-      left: -2.5rem;
-      top: 4px;
-      width: 13px;
-      height: 13px;
-      border-radius: 50%;
-      background: var(--bg);
-      border: 2px solid var(--accent);
-      box-shadow: 0 0 8px rgba(0,229,255,0.35);
-      z-index: 1;
-    }
-    .tl-item.tl-internship .tl-dot { border-color: var(--accent3); box-shadow: 0 0 8px rgba(245,158,11,0.35); }
-    .tl-item.tl-work .tl-dot { border-color: var(--accent2); box-shadow: 0 0 8px rgba(124,58,237,0.35); }
-    .tl-meta {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-bottom: 0.4rem;
-      flex-wrap: wrap;
-    }
-    .tl-date {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.15em;
-      color: var(--accent);
-      text-transform: uppercase;
-    }
-    .tl-item.tl-internship .tl-date { color: var(--accent3); }
-    .tl-item.tl-work .tl-date { color: #a78bfa; }
-    .tl-badge {
-      font-family: var(--font-mono);
-      font-size: 0.55rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.2rem 0.5rem;
-      border-radius: 2px;
-      border: 1px solid;
-    }
-    .tl-badge-edu { border-color: rgba(0,229,255,0.3); color: var(--accent); background: rgba(0,229,255,0.05); }
-    .tl-badge-intern { border-color: rgba(245,158,11,0.3); color: var(--accent3); background: rgba(245,158,11,0.05); }
-    .tl-badge-work { border-color: rgba(124,58,237,0.3); color: #a78bfa; background: rgba(124,58,237,0.05); }
-    .tl-head {
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      margin-bottom: 0.4rem;
-    }
-    .tl-logo {
-      width: 32px;
-      height: 32px;
-      border-radius: 6px;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      overflow: hidden;
-      font-family: var(--font-mono);
-      font-size: 0.55rem;
-      color: var(--text-muted);
-      letter-spacing: 0;
-      padding: 3px;
-    }
-    .tl-logo img { width: 100%; height: 100%; object-fit: contain; }
-    .tl-title-group { flex: 1; }
-    .tl-role {
-      font-size: 0.92rem;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.25;
-      margin-bottom: 0.15rem;
-    }
-    .tl-org {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: var(--text-dim);
-      letter-spacing: 0.05em;
-    }
-    .tl-desc {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-      max-width: 560px;
-    }
- 
-    /* ─── TIMELINE TABS ─── */
-    .tl-tabs {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 0.35rem;
-      width: fit-content;
-    }
-    .tl-tab {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.55rem 1.4rem;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      background: transparent;
-      border: 1px solid transparent;
-      border-radius: 4px;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.22s ease;
-    }
-    .tl-tab:hover:not(.active) {
-      color: var(--text-dim);
-      border-color: var(--border);
-    }
-    .tl-tab.active {
-      background: var(--bg3);
-      border-color: rgba(0,229,255,0.25);
-      color: var(--accent);
-      box-shadow: 0 0 12px rgba(0,229,255,0.08);
-    }
-    #tab-academic.active {
-      border-color: rgba(124,58,237,0.3);
-      color: #a78bfa;
-      box-shadow: 0 0 12px rgba(124,58,237,0.1);
-    }
-    .tl-tab-icon { font-size: 0.7rem; }
-    .tl-panel {
-      animation: panelFadeIn 0.35s ease forwards;
-    }
-    .tl-panel-hidden {
-      display: none;
-    }
-    @keyframes panelFadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--bg2);
-      border-top: 1px solid var(--border);
-      padding: 4rem 3rem;
-      margin-top: 2rem;
-    }
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-    }
-    .footer-brand {
-      font-size: 1.2rem;
-      font-weight: 800;
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.02em;
-    }
-    .footer-brand span { color: var(--accent); }
-    .footer-tagline {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-      margin-bottom: 1.5rem;
-    }
-    .footer-col-title {
-      font-family: var(--font-mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.2em;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-    .footer-links { list-style: none; }
-    .footer-links li { margin-bottom: 0.5rem; }
-    .footer-links a {
-      font-size: 0.82rem;
-      color: var(--text-dim);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: var(--accent); }
-    .footer-bottom {
-      margin-top: 3rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .footer-copy {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
-    }
-    a {
-      color: #9ae6ff;
-      text-decoration: none;
-    }
-    a:hover {
-      color: #ffffff;
-    }
-
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 900px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-socials { display: none; }
-      .page-header, .about-section { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .divider { margin: 0 1.5rem; }
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .about-sidebar { position: static; }
-      .bio-grid { grid-template-columns: 1fr; }
-      .bio-cv-image { position: static; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .cert-grid { grid-template-columns: 1fr; }
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-    }
-    @media (max-width: 600px) {
-      nav { padding: 1rem; }
-      .page-header, .about-section { padding-left: 1rem; padding-right: 1rem; }
-      .divider { margin: 0 1rem; }
-      .footer-grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
  
@@ -868,7 +43,7 @@
     <div class="hero-text">
       <div class="hero-eyebrow">Who I am</div>
       <h1 class="hero-name">About <br /><span>Me</span></h1>
-      <div class="hero-title">// Deep Learning · Computer Vision · MLOps · Azure · Edge AI</div>
+      <div class="hero-title">// Deep Learning · Computer Vision · MLOps · Azure · Edge AI · Oracle</div>
       <p class="hero-desc">Senior Computer Vision &amp; ML Engineer based in Milan, Italy. Passionate about making machines see and understand the world.
         <br>Expert in Deep Learning, Image Processing. Worked in aviation, security, smart operations and logistics industries &#128747 &#128230 &#128373
         <br>Lived in Stockholm, Milan, Trento and Mantua. Speaking English and Italian, <a href="mailto:federic.fav@gmail.com" target="_blank">DM me</a> to grab a coffee! &#9749 &#128522
@@ -1314,82 +489,275 @@
         <div class="langs-row">
           <div class="lang-card">
             <a href="https://acrobat.adobe.com/link/track?uri=urn:aaid:scds:US:c4bb2a0f-3bcc-3d03-b6b8-de96e9ca054c" target="_blank">
-            <div class="lang-name">English</div>
-            <div class="lang-level">C1 · IELTS Band 8</div>
+              <div class="lang-name">English</div>
+              <div class="lang-level">C1 · IELTS Band 8</div>
+              <!-- <span class="lang-flag"><img src="https://flagcdn.com/24x18/gb.png" alt="England flag" /></span> -->
             </a>
+            <img src="https://flagcdn.com/32x24/gb.png" alt="UK flag" class="lang-flag-img" />
           </div>
           <div class="lang-card">
-            <div class="lang-name">Italian</div>
-            <div class="lang-level">Native speaker</div>
+            <div>
+              <div class="lang-name">Italian</div>
+              <div class="lang-level">Native speaker</div>
+            </div>
+            <img src="https://flagcdn.com/32x24/it.png" alt="Italy flag" class="lang-flag-img" />
           </div>
         </div>
  
-        <a href="https://www.credly.com/users/federico-favia.7d78e58b/badges#other" target="_blank"><div id="certifications" class="block-title">Certifications</div></a>
-        <div class="cert-grid">
-          <a class="cert-item" href="https://learn.microsoft.com/it-it/users/federicofavia-3895/credentials/3e7c0fa4a1d207ed" target="_blank">
-            <span class="cert-arrow">→</span>
-            <span class="cert-text">MS Azure AI Fundamentals (AI-900)</span>
-          </a>
-          <a class="cert-item" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=3B4A781D7117CEEE4CEB1A8F781A5249D3A9EB2BDD90F2D14FCDCD960BEA8A73" target="_blank">
-            <span class="cert-arrow">→</span>
-            <span class="cert-text">Oracle OCI DevOps 2023 Professional</span>
-          </a>
-          <a class="cert-item" href="https://learn.nvidia.com/certificates?id=C0qbnTF2Qc6GF8nM-bUISA#" target="_blank">
-            <span class="cert-arrow">→</span>
-            <span class="cert-text">NVIDIA DLI Fundamentals of Deep Learning</span>
-          </a>
-          <a class="cert-item" href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:dfd9844b-1d9d-4d52-a607-49865a37bd2b" target="_blank">
-            <span class="cert-arrow">→</span>
-            <span class="cert-text">M2L Mediterranean Machine Learning Summer School 2024</span>
-          </a>
-          <a class="cert-item" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=FE497E382BE326934D682F975E80DB06662413032EC5539B1D4D5E2FE589D7AE" target="_blank">
-            <span class="cert-arrow">→</span>
-            <span class="cert-text">Oracle AI Vector Search Professional</span>
-          </a>
-          <a class="cert-item" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=C99A37C8AC0930AB30921D392324D0BC30DE37B10E2B4091E8E7B6F3B5DFF698" target="_blank">
-            <span class="cert-arrow">→</span>
-            <span class="cert-text">Oracle OCI GenAI 2024 Professional</span>
-          </a>
-          <a class="cert-item" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=25FE2167CED53459729AFDA46E84C772AB5BE8BCC5C230E10A69AAB3DFB41449" target="_blank">
-            <span class="cert-arrow">→</span>
-            <span class="cert-text">Oracle OCI Data Science 2022 Professional</span>
-          </a>
-          <a class="cert-item" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=2C413D06B4ACF2787F7B9DAA885D21FD56641FF7AFF4206E5C316AF618139CEA" target="_blank">
-            <span class="cert-arrow">→</span>
-            <span class="cert-text">Oracle ML using Autonomous DB Associate</span>
-          </a>
-          <a class="cert-item" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=0C835049D78787843C8059FB4545DAF13B75D416BC042B190C4CF61667D2ABBE" target="_blank">
-            <span class="cert-arrow">→</span>
-            <span class="cert-text">Oracle OCI 2023 AI Foundations Associate</span>
-          </a>
-          <a class="cert-item" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=404F3EBAACEE7D0DAC6FB3E7D5241AFFA147B4C61C97CBFDF58EB0A5A8FB8F33" target="_blank">
-            <span class="cert-arrow">→</span>
-            <span class="cert-text">Oracle OCI Data Management Foundations 2023</span>
-          </a>
-          <a class="cert-item" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=411A9E6C5C92D5751FD1F989D545A1E411228CD4814A0CFD88F98DD876E678D0" target="_blank">
-            <span class="cert-arrow">→</span>
-            <span class="cert-text">Oracle OCI Foundations 2023 Associate</span>
-          </a>
-          <a class="cert-item" href="https://www.polimi.it/studenti/esami-di-stato" target="_blank">
-            <span class="cert-arrow">→</span>
-            <span class="cert-text">National License — Engineer ICT Section A 2023</span>
-          </a>
-          <a class="cert-item" href="https://acrobat.adobe.com/link/track?uri=urn%3Aaaid%3Ascds%3AUS%3Ae284a236-a444-49b1-a8e4-53a49a1a748f&viewer%21megaVerb=group-discover" target="_blank">
-            <span class="cert-arrow">→</span>
-            <span class="cert-text">Huawei Seeds of the Future 2020</span>
-          </a>
-          <a class="cert-item" href="https://app.myopenbadge.com/receive/mYVynfgks-1cc04744a216df495735898aa5d8940b-bI8klNyYBcW-71677747208/LUVxwslGAyKF-440811a0504791d0bd115a3edb0b4247-DbVNQmqhP0l-7/public" target="_blank">
+        <a href="https://www.credly.com/users/federico-favia.7d78e58b/badges#other" target="_blank">
+          <div id="certifications" class="block-title">Certifications</div>
+        </a>
+        
+        <!-- AI / Deep Learning -->
+        <div class="cert-group">
+          <div class="cert-group-label">AI / Deep learning</div>
+          <div class="cert-grid">
+            <a class="cert-item" href="https://learn.microsoft.com/it-it/users/federicofavia-3895/credentials/8736ade785f2764" target="_blank">
+              <span class="cert-arrow">→</span>
+              <span class="cert-text">Azure Data Scientist Associate (DP-100)</span>
+              <span class="cert-vendor cv-azure">Azure</span>
+            </a>
+            <a class="cert-item" href="https://learn.microsoft.com/it-it/users/federicofavia-3895/credentials/3e7c0fa4a1d207ed" target="_blank">
+              <span class="cert-arrow">→</span>
+              <span class="cert-text">Azure AI Fundamentals (AI-900)</span>
+              <span class="cert-vendor cv-azure">Azure</span>
+            </a>
+            <a class="cert-item" href="https://learn.nvidia.com/certificates?id=C0qbnTF2Qc6GF8nM-bUISA#" target="_blank">
+              <span class="cert-arrow">→</span>
+              <span class="cert-text">NVIDIA DLI Fundamentals of Deep Learning</span>
+              <span class="cert-vendor cv-nvidia">NVIDIA</span>
+            </a>
+            <a class="cert-item" href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:dfd9844b-1d9d-4d52-a607-49865a37bd2b" target="_blank">
+              <span class="cert-arrow">→</span>
+              <span class="cert-text">M2L Mediterranean Machine Learning Summer School 2024</span>
+              <span class="cert-vendor cv-nvidia">M2L</span>
+            </a>
+            <a class="cert-item" href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=25FE2167CED53459729AFDA46E84C772AB5BE8BCC5C230E10A69AAB3DFB41449" target="_blank">
+              <span class="cert-arrow">→</span>
+              <span class="cert-text">OCI Data Science 2022 Professional</span>
+              <span class="cert-vendor cv-oracle">Oracle</span>
+            </a>
+            <a class="cert-item" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=FE497E382BE326934D682F975E80DB06662413032EC5539B1D4D5E2FE589D7AE" target="_blank">
+              <span class="cert-arrow">→</span>
+              <span class="cert-text">Oracle AI Vector Search Professional</span>
+              <span class="cert-vendor cv-oracle">Oracle</span>
+            </a>
+            <a class="cert-item" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=C99A37C8AC0930AB30921D392324D0BC30DE37B10E2B4091E8E7B6F3B5DFF698" target="_blank">
+              <span class="cert-arrow">→</span>
+              <span class="cert-text">OCI GenAI 2024 Professional</span>
+              <span class="cert-vendor cv-oracle">Oracle</span>
+            </a>
+            <a class="cert-item" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=0C835049D78787843C8059FB4545DAF13B75D416BC042B190C4CF61667D2ABBE" target="_blank">
+              <span class="cert-arrow">→</span>
+              <span class="cert-text">OCI AI Foundations Associate</span>
+              <span class="cert-vendor cv-oracle">Oracle</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Cloud platforms -->
+        <div class="cert-group">
+          <div class="cert-group-label">Cloud platforms / DevOps / Data Eng</div>
+          <div class="cert-grid">
+            <a class="cert-item" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=3B4A781D7117CEEE4CEB1A8F781A5249D3A9EB2BDD90F2D14FCDCD960BEA8A73" target="_blank">
+              <span class="cert-arrow">→</span>
+              <span class="cert-text">OCI DevOps 2023 Professional</span>
+              <span class="cert-vendor cv-oracle">Oracle</span>
+            </a>
+            <a class="cert-item" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=2C413D06B4ACF2787F7B9DAA885D21FD56641FF7AFF4206E5C316AF618139CEA" target="_blank">
+              <span class="cert-arrow">→</span>
+              <span class="cert-text">Oracle ML using Autonomous DB Associate</span>
+              <span class="cert-vendor cv-oracle">Oracle</span>
+            </a>
+            <a class="cert-item" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=404F3EBAACEE7D0DAC6FB3E7D5241AFFA147B4C61C97CBFDF58EB0A5A8FB8F33" target="_blank">
+              <span class="cert-arrow">→</span>
+              <span class="cert-text">OCI Data Management Foundations 2023</span>
+              <span class="cert-vendor cv-oracle">Oracle</span>
+            </a>
+            <a class="cert-item" href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=411A9E6C5C92D5751FD1F989D545A1E411228CD4814A0CFD88F98DD876E678D0" target="_blank">
+              <span class="cert-arrow">→</span>
+              <span class="cert-text">OCI Foundations 2023 Associate</span>
+              <span class="cert-vendor cv-oracle">Oracle</span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Professional license -->
+        <div class="cert-group">
+          <div class="cert-group-label">PM / Business Development / Innovation</div>
+          <div class="cert-grid">
+            <a class="cert-item" href="https://app.myopenbadge.com/receive/mYVynfgks-1cc04744a216df495735898aa5d8940b-bI8klNyYBcW-71677747208/LUVxwslGAyKF-440811a0504791d0bd115a3edb0b4247-DbVNQmqhP0l-7/public" target="_blank">
             <span class="cert-arrow">→</span>
             <span class="cert-text">SOI Innovation Trento</span>
+            <span class="cert-vendor cv-soi">SOI</span>
           </a>
-          <a class="cert-item" href="https://app.novatalent.com/open/certificate/OEXD6FXX04O6EJAI7N91MP2CV" target="_blank">
-            <span class="cert-arrow">→</span>
-            <span class="cert-text">Nova Member since 2021</span>
-          </a>
+          </div>
         </div>
+        
+        <!-- Language -->
+        <div class="cert-group">
+          <div class="cert-group-label">Additional Languages</div>
+          <div class="cert-grid">
+            <a class="cert-item" href="https://acrobat.adobe.com/id/urn:aaid:sc:EU:059013c0-e457-4eb5-bf74-2c9b90281b89" target="_blank">
+              <span class="cert-arrow">→</span>
+              <img class="cert-flag" src="https://flagcdn.com/24x18/de.png" alt="Germany flag" />
+              <span class="cert-text">German A1 Speex</span>
+              <span class="cert-vendor cv-lang">Speex</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- ─── HONORS & ACHIEVEMENTS ─── -->
+        <!-- INSERT POINT: this section lives right after .cert-grid closes above -->
+        <div id="honors" class="block-title" style="margin-top: 3.5rem;">Honors &amp; Achievements</div>
+        <div class="honors-grid-compact">
+          <div class="honor-mini">
+            <span class="honor-mini-dot cyan"></span>
+            <div class="honor-mini-body">
+              <div class="honor-mini-title">Speaker x2, Reply Xchange 2024, 2022</div>
+              <div class="honor-mini-meta cyan">2024, 2022 · Milan, SuperStudio</div>
+              <div class="honor-mini-desc">2 Keynotes at <a href="https://www.reply.com/en/xchange" target="_blank">Reply Xchange</a> on Airport Intelligence and Smart Operation Control, representing the CV Business Unit.</div>
+            </div>
+          </div>
+
+          <div class="honor-mini">
+            <span class="honor-mini-dot cyan"></span>
+            <div class="honor-mini-body">
+              <div class="honor-mini-title">Demo Booth, Reply Xchange 2025</div>
+              <div class="honor-mini-meta cyan">2025 · Milan, SuperStudio</div>
+              <div class="honor-mini-desc">Demo Booth on Physical AI and Computer Vision at <a href="https://www.reply.com/en/xchange" target="_blank">Reply Xchange</a>, representing the CV Business Unit on the main stage.</div>
+            </div>
+          </div>
+          
+          <div class="honor-mini">
+            <span class="honor-mini-dot cyan"></span>
+            <div class="honor-mini-body">
+              <div class="honor-mini-title"><a href="https://www.polimi.it/studenti/esami-di-stato" target="_blank">National License, Engineer ICT Section A 2023</a></div>
+              <div class="honor-mini-meta cyan">2023 · PoliMi, Milan</div>
+              <div class="honor-mini-desc">National qualification to practice as a professional engineer in the field of ICT in Italy.</div>
+            </div>
+          </div>
+
+          <div class="honor-mini">
+            <span class="honor-mini-dot cyan"></span>
+            <div class="honor-mini-body">
+              <div class="honor-mini-title">M2L Summer School Selectee</div>
+              <div class="honor-mini-meta cyan">2024 · Bicocca University, Milan</div>
+              <div class="honor-mini-desc">Accepted to the Mediterranean Machine Learning Summer School.</div>
+            </div>
+          </div>
+        
+          <div class="honor-mini">
+            <span class="honor-mini-dot violet"></span>
+            <div class="honor-mini-body">
+              <div class="honor-mini-title"><a href="https://acrobat.adobe.com/link/track?uri=urn%3Aaaid%3Ascds%3AUS%3Ae284a236-a444-49b1-a8e4-53a49a1a748f&viewer%21megaVerb=group-discover" target="_blank">Huawei Seeds for the Future 2020</a></div>
+              <div class="honor-mini-meta violet">2020 · Huawei Italy</div>
+              <div class="honor-mini-desc">Nominated as top young ICT talent for the global <a href="https://www.huawei.com/minisite/seeds-for-the-future/index.html" target="_blank">Seeds for the Future</a> leadership program.</div>
+            </div>
+          </div>
+        
+          <div class="honor-mini">
+            <span class="honor-mini-dot violet"></span>
+            <div class="honor-mini-body">
+              <div class="honor-mini-title"><a href="https://app.novatalent.com/open/certificate/OEXD6FXX04O6EJAI7N91MP2CV" target="_blank">Nova Member</a></div>
+              <div class="honor-mini-meta violet">Since 2021 · Nova Network</div>
+              <div class="honor-mini-desc">Admitted to the global <a href="https://www.novatalent.com/" target="_blank"> Nova Network</a> of top 5% young European professionals via competitive multi-stage assessment.</div>
+            </div>
+          </div>
+
+          <div class="honor-mini">
+            <span class="honor-mini-dot amber"></span>
+            <div class="honor-mini-body">
+              <div class="honor-mini-title">EIT Digital Master School Scholarship</div>
+              <div class="honor-mini-meta amber">2018 · KTH + UniTrento</div>
+              <div class="honor-mini-desc">Selected for Europe's most competitive joint AI &amp; innovation double MSc spanning two top universities.</div>
+            </div>
+          </div>
+        
+          <div class="honor-mini">
+            <span class="honor-mini-dot amber"></span>
+            <div class="honor-mini-body">
+              <div class="honor-mini-title">MSc Information Engineering — 110 Honors / 110 and A</div>
+              <div class="honor-mini-meta amber">2021 · University of Trento and KTH</div>
+              <div class="honor-mini-desc">Graduated with maximum marks and honors — the highest distinction in the Italian and Swedish university systems.</div>
+            </div>
+          </div>        
+        
+        </div>
+        <!-- ─── END HONORS & ACHIEVEMENTS ─── -->
  
       </div>
     </div>
+    <div class="contact-section">
+      <div class="block-title">Get in touch</div>
+      <div class="contact-grid">
+    
+        <!-- Left: info -->
+        <div>
+          <p class="contact-tagline">Let's build something<br /><span>worth seeing.</span></p>
+          <div>
+            <div class="contact-info-label">Email</div>
+            <div class="contact-info-value"><a href="mailto:federic.fav@gmail.com">federic.fav@gmail.com</a></div>
+          </div>
+          <div>
+            <div class="contact-info-label">Phone</div>
+            <div class="contact-info-value">+39 346 5759669</div>
+          </div>
+          <div>
+            <div class="contact-info-label">Location</div>
+            <div class="contact-info-value">Milan, Italy</div>
+          </div>
+          <div>
+            <div class="contact-info-label">Response time</div>
+            <div class="contact-info-value">Usually within 24–48 h</div>
+          </div>
+        </div>
+    
+        <!-- Right: form -->
+        <div>
+          <form class="contact-form" id="contact-form" onsubmit="handleContactSubmit(event)">
+    
+            <div class="form-row">
+              <div class="form-field">
+                <label class="form-label" for="cf-name">Your Name</label>
+                <input class="form-input" type="text" id="cf-name" name="name" placeholder="Your name" required />
+              </div>
+              <div class="form-field">
+                <label class="form-label" for="cf-email">Your Email (From)</label>
+                <input class="form-input" type="email" id="cf-email" name="email" placeholder="you@example.com" required />
+              </div>
+            </div>
+    
+            <div class="form-field">
+              <label class="form-label" for="cf-topic">Topic</label>
+              <select class="form-select" id="cf-topic" name="topic" required>
+                <option value="" disabled selected>Select a topic…</option>
+                <option value="job-opportunity">Job opportunity</option>
+                <option value="project-collaboration">Project / collaboration</option>
+                <option value="consulting">Consulting inquiry</option>
+                <option value="speaking">Speaking / event</option>
+                <option value="coffee">Just want to say hi ☕</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+    
+            <div class="form-field">
+              <label class="form-label" for="cf-message">Message</label>
+              <textarea class="form-textarea" id="cf-message" name="message" placeholder="Tell me what's on your mind…" required></textarea>
+            </div>
+    
+            <div class="form-submit-row">
+              <span class="form-note">// Your message opens in your mail client</span>
+              <button type="submit" class="btn btn-primary">Send message to Fede</button>
+            </div>
+    
+            <div class="form-status" id="cf-status"></div>
+          </form>
+        </div>
+    
+      </div>
+    </div>
+
   </section>
  
   <!-- ─── FOOTER ─── -->
@@ -1431,7 +799,7 @@
     </div>
   </footer>
  
-    <script>
+    <script id="bio-toggle-and-contact-form-script-paste-into-existing-script">
     // ─── Tab switch ───
     function switchTab(tab) {
       document.querySelectorAll('.tl-panel').forEach(p => {
@@ -1474,6 +842,37 @@
       });
     }, { threshold: 0.15 });
     tlItems.forEach(item => obs.observe(item));
+
+    // ─── Contact Form ───
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      var name    = document.getElementById('cf-name').value.trim();
+      var email   = document.getElementById('cf-email').value.trim();
+      var topic   = document.getElementById('cf-topic');
+      var topicLabel = topic.options[topic.selectedIndex].text;
+      var message = document.getElementById('cf-message').value.trim();
+      var status  = document.getElementById('cf-status');
+  
+      var subject = encodeURIComponent('[Portfolio] ' + topicLabel + ' — from ' + name);
+      var body    = encodeURIComponent(
+        'Hi Federico,\n\n' + message +
+        '\n\n---\nFrom: ' + name +
+        '\nEmail: ' + email +
+        '\nTopic: ' + topicLabel
+      );
+  
+      var mailto = 'mailto:federic.fav@gmail.com?subject=' + subject + '&body=' + body;
+  
+      /* Try to open mail client */
+      try {
+        window.location.href = mailto;
+        status.textContent = '✓ Your mail client should open now.';
+        status.className = 'form-status success';
+      } catch(err) {
+        status.textContent = '✗ Could not open mail client — please email federic.fav@gmail.com directly.';
+        status.className = 'form-status error';
+      }
+    }
   </script>
 </body>
 </html>
