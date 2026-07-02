@@ -690,6 +690,7 @@ nav {
 .cv-nvidia { background: rgba(118,185,0,0.1);   color: #86efac; border: 1px solid rgba(118,185,0,0.2); }
 .cv-soi    { background: rgba(245,100,120,0.1); color: #fca5a5; border: 1px solid rgba(245,100,120,0.2); }
 .cv-speex   { background: rgba(0,229,255,0.08);  color: var(--accent); border: 1px solid rgba(0,229,255,0.15); }
+.cv-mckinsey    { background: rgba(60, 15, 123, 0.1); color: #bba5fc; border: 1px solid rgba(60, 15, 123, 0.1); }
   
 /* ─── COMPACT HONORS ─── */
 .honors-grid-compact {
