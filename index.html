@@ -85,19 +85,18 @@
     <div class="featured-card">
       <div>
         <div class="featured-badge">▸ Featured Project</div>
-        <h3 class="featured-title">Naval Traffic Estimate<br />in Venice</h3>
-        <p class="featured-desc">Estimates naval traffic in Venice from a webcam video of the Grand Canal using motion detection algorithms — adaptive background subtraction, morphological filters, and blob detection to count boats and compute flow rate, integral average, and median.</p>
+        <h3 class="featured-title">Image<br />Segmentation</h3>
+        <p class="featured-desc">Explores image segmentation through both classical image-processing techniques and modern deep learning approaches — from thresholding, watershed and contour-based methods to neural network segmentation models, applied to real-world imagery.</p>
         <div class="tech-tags">
-          <span class="tag">C++</span>
-          <span class="tag">OpenCV</span>
-          <span class="tag">MATLAB</span>
-          <span class="tag">Background Subtraction</span>
-          <span class="tag">Blob Detection</span>
+          <span class="tag">PyTorch</span>
+          <span class="tag">Image Segmentation</span>
+          <span class="tag">Deep Learning</span>
+          <span class="tag">Computer Vision</span>
         </div>
-        <a class="btn btn-primary" href="https://github.com/favia96/Naval-Traffic-Estimate-Venice" target="_blank">View on GitHub ↗</a>
+        <a class="btn btn-primary" href="https://github.com/favia96/segmentation-cv-lecture-2025" target="_blank">View on GitHub ↗</a>
       </div>
       <div class="featured-img-placeholder">
-        <img src="images/script.png" alt="Naval Traffic Estimate" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" onerror="this.parentElement.innerHTML='<span class=\'img-label\'>images/script.png</span>'">
+        <img src="images/segmentation.png" alt="Image Segmentation" style="width:100%;height:100%;object-fit:cover;opacity:0.85;" onerror="this.parentElement.innerHTML='<span class=\'img-label\'>images/segmentation.png</span>'">
       </div>
     </div>
   </section>
@@ -109,13 +108,76 @@
     <div class="section-label">All Work</div>
     <h2 class="section-title">More Projects</h2>
     <div class="projects-grid">
+      
+        <div class="project-card">
+        <div class="project-card-img">
+          <img src="images/product_category.png" alt="Product Category Classifier ML" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/product_category.png</div>'">
+        </div>
+        <div class="project-card-body">
+        <div class="project-num">06 / PyTorch · DistilBERT · FastAPI</div>
+        <h3 class="project-title">Product Category Classifier ML</h3>
+        <p class="project-desc">End-to-end ML project predicting product category from name + brand across languages (TF-IDF/Logistic Regression + fine-tuned multilingual DistilBERT approach), served via FastAPI with Docker.</p>
+        <div class="tech-tags">
+          <span class="tag">PyTorch</span>
+          <span class="tag">DistilBERT</span>
+          <span class="tag">FastAPI</span>
+          <span class="tag">Docker</span>
+          <span class="tag">NLP</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-link" href="https://github.com/favia96/product-category-ml" target="_blank">→ View Code</a>
+        </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-img">
+          <img src="images/cplusplus.png" alt="Football Detection" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/cplusplus.png</div>'">
+        </div>
+        <div class="project-card-body">
+        <div class="project-num">03 / YOLOv3 · C++ · OpenCV</div>
+        <h3 class="project-title">Football Detection &amp; Tracking</h3>
+        <p class="project-desc">Bachelor Thesis at Xtensa Srl — comparing deep learning based tracking with YOLOv3 against classic algorithms like Mean-shift for football player detection and tracking.</p>
+        <div class="tech-tags">
+          <span class="tag">YOLOv3</span>
+          <span class="tag">Darknet</span>
+          <span class="tag">C/C++</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">MATLAB</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-link" href="https://github.com/favia96/Football-Players-Detection-Tracking" target="_blank">→ View Code</a>
+        </div>
+        </div>
+      </div>
+      
+      <div class="project-card">
+        <div class="project-card-img">
+          <img src="images/script.png" alt="Naval Traffic Estimate" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/script.png</div>'">
+        </div>
+        <div class="project-card-body">
+        <div class="project-num">01 / C++ · OpenCV · MATLAB</div>
+        <h3 class="project-title">Naval Traffic Estimate in Venice</h3>
+        <p class="project-desc">Estimates naval traffic in Venice from a webcam video of the Grand Canal using motion detection algorithms — adaptive background subtraction, morphological filters, and blob detection to count boats and compute flow rate, integral average, and median.</p>
+        <div class="tech-tags">
+          <span class="tag">C++</span>
+          <span class="tag">OpenCV</span>
+          <span class="tag">MATLAB</span>
+          <span class="tag">Background Subtraction</span>
+          <span class="tag">Blob Detection</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-link" href="https://github.com/favia96/Naval-Traffic-Estimate-Venice" target="_blank">→ View Code</a>
+        </div>
+        </div>
+      </div>
 
       <div class="project-card">
         <div class="project-card-img">
           <img src="images/bag_visual_words.png" alt="Visual Search System" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/bag_visual_words.png</div>'">
         </div>
         <div class="project-card-body">
-        <div class="project-num">01 / Python · OpenCV</div>
+        <div class="project-num">02 / Python · OpenCV</div>
         <h3 class="project-title">Visual Search System</h3>
         <p class="project-desc">Image classification via a Visual Search System built on a hierarchical K-means tree. Features represented by SIFT keypoint descriptors, scored with TF-IDF using the Bag of Visual Words model.</p>
         <div class="tech-tags">
@@ -132,21 +194,82 @@
 
       <div class="project-card">
         <div class="project-card-img">
-          <img src="images/cplusplus.png" alt="Football Players Detection" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/cplusplus.png</div>'">
+          <img src="images/face_matching.png" alt="Face Match and Intrusion Detection" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/face_matching.png</div>'">
         </div>
         <div class="project-card-body">
-        <div class="project-num">02 / YOLOv3 · C++ · OpenCV</div>
-        <h3 class="project-title">Football Players Detection &amp; Tracking</h3>
-        <p class="project-desc">Bachelor Thesis at Xtensa Srl — comparing deep learning based tracking with YOLOv3 against classic algorithms like Mean-shift for football player detection and tracking.</p>
+        <div class="project-num">04 / Python · OpenCV · Face Recognition</div>
+        <h3 class="project-title">Face Match &amp; Intrusion Detection</h3>
+        <p class="project-desc">A two-part computer vision project combining face detection, face matching and facial attribute analysis (age, gender, race, emotion) with intrusion detection for CCTV-style video surveillance scenarios.</p>
         <div class="tech-tags">
-          <span class="tag">YOLOv3</span>
-          <span class="tag">Darknet</span>
-          <span class="tag">C/C++</span>
+          <span class="tag">Face Recognition</span>
           <span class="tag">OpenCV</span>
-          <span class="tag">MATLAB</span>
+          <span class="tag">Video Surveillance</span>
+          <span class="tag">Deep Learning</span>
         </div>
         <div class="project-footer">
-          <a class="project-link" href="https://github.com/favia96/Football-Players-Detection-Tracking" target="_blank">→ View Code</a>
+          <a class="project-link" href="https://github.com/favia96/face-matching-intrusion-det-cv-lecture-2024" target="_blank">→ View Code</a>
+        </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-img">
+          <img src="images/object_detection.png" alt="YOLOv8 Object Detection" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/object_detection.png</div>'">
+        </div>
+        <div class="project-card-body">
+        <div class="project-num">05 / YOLOv8 · Ultralytics · Roboflow</div>
+        <h3 class="project-title">YOLOv8 Object Detection</h3>
+        <p class="project-desc">End-to-end custom object detection pipeline built with Ultralytics YOLOv8 — dataset preparation via Roboflow, fine-tuning, evaluation, and inference on images and video, including object tracking.</p>
+        <div class="tech-tags">
+          <span class="tag">YOLOv8</span>
+          <span class="tag">Ultralytics</span>
+          <span class="tag">Roboflow</span>
+          <span class="tag">Object Tracking</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-link" href="https://github.com/favia96/object-detection-cv-lecture-2023" target="_blank">→ View Code</a>
+        </div>
+        </div>
+      </div>
+
+
+
+      <div class="project-card">
+        <div class="project-card-img">
+          <img src="images/iot_sms_alert.png" alt="IoT SMS Safety Alert System" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/iot_sms_alert.png</div>'">
+        </div>
+        <div class="project-card-body">
+        <div class="project-num">07 / C++ · Arduino · GSM</div>
+        <h3 class="project-title">IoT SMS Safety Alert System</h3>
+        <p class="project-desc">Button-triggered safety check-in system on Arduino: press once to send a check-in SMS, press again if unanswered to broadcast the last known GPS position and a Google Maps link to emergency contacts.</p>
+        <div class="tech-tags">
+          <span class="tag">C++</span>
+          <span class="tag">Arduino</span>
+          <span class="tag">GSM / SMS</span>
+          <span class="tag">Embedded Systems</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-link" href="https://github.com/favia96/iot-sms-alert-arduino" target="_blank">→ View Code</a>
+        </div>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <div class="project-card-img">
+          <img src="images/gantt_chart.png" alt="PM Gantt Chart Generator" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/gantt_chart.png</div>'">
+        </div>
+        <div class="project-card-body">
+        <div class="project-num">08 / Python · Pandas · Matplotlib</div>
+        <h3 class="project-title">PM Gantt Chart Generator</h3>
+        <p class="project-desc">Lightweight Python tool that converts structured Excel task list into a clean, publication-ready Gantt chart for PMs and engineers without access to Jira.</p>
+        <div class="tech-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Pandas</span>
+          <span class="tag">Matplotlib</span>
+          <span class="tag">Project Management</span>
+        </div>
+        <div class="project-footer">
+          <a class="project-link" href="https://github.com/favia96/pm-tools-gantt-chart" target="_blank">→ View Code</a>
         </div>
         </div>
       </div>
@@ -156,7 +279,7 @@
           <img src="images/match_sift_nearest_neighbour_dist_ratio.png" alt="Image Matching SIFT SURF" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/match_sift.png</div>'">
         </div>
         <div class="project-card-body">
-        <div class="project-num">03 / MATLAB · VLFeat</div>
+        <div class="project-num">09 / MATLAB · VLFeat</div>
         <h3 class="project-title">Image Matching: SIFT &amp; SURF</h3>
         <p class="project-desc">Investigation of two popular scale-invariant feature detectors — SIFT and SURF — for feature extraction and image matching using nearest-neighbour distance ratio.</p>
         <div class="tech-tags">
@@ -176,7 +299,7 @@
           <img src="images/saturn.png" alt="Solar System OpenGL" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/saturn.png</div>'">
         </div>
         <div class="project-card-body">
-        <div class="project-num">04 / C++ · OpenGL</div>
+        <div class="project-num">10 / C++ · OpenGL</div>
         <h3 class="project-title">Solar System (OpenGL)</h3>
         <p class="project-desc">Interactive 3D Solar System demo with keyboard navigation and .jpg textures on planets, rendered with GLEW and GLUT.</p>
         <div class="tech-tags">
@@ -196,7 +319,7 @@
           <img src="images/tampering.png" alt="Image Tampering Detection" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/tampering.png</div>'">
         </div>
         <div class="project-card-body">
-        <div class="project-num">05 / MATLAB</div>
+        <div class="project-num">11 / MATLAB</div>
         <h3 class="project-title">Image Tampering Detection</h3>
         <p class="project-desc">Multimedia Data Security project detecting and localizing tampered image artifacts using PRNU-based and JPEG-based forensic techniques.</p>
         <div class="tech-tags">
@@ -215,7 +338,7 @@
           <img src="images/Logo-Engel.png" alt="Engel Startup Logo" onerror="this.parentElement.innerHTML='<div class=\'project-card-img-placeholder\'>images/Logo-Engel.png</div>'">
         </div>
         <div class="project-card-body">
-        <div class="project-num">06 / Design</div>
+        <div class="project-num">12 / Design</div>
         <h3 class="project-title"><a href="https://vimeo.com/344972472" target="_blank">Engel</a> Startup Logo</h3>
         <p class="project-desc">Personally created and designed the logo for the Engel startup during the Startup Lab Course at Clab — University of Trento, using Adobe Illustrator.</p>
         <div class="tech-tags">
