@@ -1,3 +1,6 @@
 *.log
 *new*html
 *old*html
+*.DS_Store
+*.localized
+tracking.md
