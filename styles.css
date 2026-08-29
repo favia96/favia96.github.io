@@ -84,6 +84,13 @@ nav {
   gap: 4rem;
 }
 .hero-text { display: flex; flex-direction: column; }
+.hero-photo-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 1rem;
+  flex-shrink: 0;
+}
 .hero-photo {
   width: 360px;
   height: 380px;
@@ -94,6 +101,11 @@ nav {
   position: relative;
   opacity: 0;
   animation: fadeUp 0.9s 0.9s forwards;
+}
+.hero-photo-cta {
+  text-align: center;
+  opacity: 0;
+  animation: fadeUp 0.9s 1.05s forwards;
 }
 .hero-photo::before {
   content: '';
@@ -1489,7 +1501,9 @@ section { padding: 6rem 3rem; }
 @media (max-width: 900px) {
   section { padding: 4rem 1.5rem; }
   #hero { grid-template-columns: 1fr; }
-  .hero-photo { width: 130px; height: 160px; position: absolute; top: 5.5rem; right: 1.5rem; }
+  .hero-photo-wrap { position: absolute; top: 5.5rem; right: 1.5rem; width: 130px; }
+  .hero-photo { width: 130px; height: 160px; }
+  .hero-photo-cta { font-size: 0.55rem; padding: 0.45rem 0.6rem; }
   .featured-card { grid-template-columns: 1fr; gap: 2rem; }
   .certs-langs-grid { grid-template-columns: 1fr; }
   .hero-scroll-indicator { display: none; }

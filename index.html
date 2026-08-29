@@ -8,6 +8,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- ─── ANALYTICS ─── -->
+  <!-- GoatCounter: privacy-friendly, cookieless behavior analytics (pageviews + CV/social click tracking) -->
+  <script data-goatcounter="https://figio96.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+  <!-- Cloudflare Web Analytics: privacy-friendly, cookieless performance / Core Web Vitals monitoring -->
+  <!-- TODO: replace CLOUDFLARE_BEACON_TOKEN with the real token once the site is added in the Cloudflare dashboard -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "CLOUDFLARE_BEACON_TOKEN"}'></script>
 </head>
 <body>
 
@@ -21,8 +30,8 @@
       <li><a href="about.html#my-skills">Skills/Certs</a></li>
     </ul>
     <div class="nav-socials">
-      <a href="https://www.linkedin.com/in/federico-favia/" target="_blank">LinkedIn ↗</a>
-      <a href="https://github.com/favia96" target="_blank">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/federico-favia/" target="_blank" data-goatcounter-click="link-linkedin-nav" data-goatcounter-title="LinkedIn (nav)">LinkedIn ↗</a>
+      <a href="https://github.com/favia96" target="_blank" data-goatcounter-click="link-github-nav" data-goatcounter-title="GitHub (nav)">GitHub ↗</a>
     </div>
   </nav>
 
@@ -35,7 +44,7 @@
       <div class="hero-eyebrow">Senior Computer Vision &amp; ML Engineer</div>
       <h1 class="hero-name">Federico<br /><span>Favia</span></h1>
       <div class="hero-title">// Deep Learning · Computer Vision · MLOps · Azure · Edge AI</div>
-      <p class="hero-desc">Building innovative solutions for complex visual problems, from object detection pipelines to production cloud and edge deployment. Currently Lead CV Engineer at Technology Data Reply IT, Milan. <a href="mailto:federic.fav@gmail.com" target="_blank">DM me</a> to grab a coffee! &#9749 &#128522 <br>Proficient in:</p>
+      <p class="hero-desc">Building innovative solutions for complex visual problems, from object detection pipelines to production cloud and edge deployment. Currently Lead CV Engineer at Technology Data Reply IT, Milan. <a href="mailto:federic.fav@gmail.com" target="_blank" data-goatcounter-click="click-email-hero" data-goatcounter-title="Email (hero DM me)">DM me</a> to grab a coffee! &#9749 &#128522 <br>Proficient in:</p>
 
       <div class="skills-icons">
         <img src="images/python.png" alt="Python" title="Python">
@@ -61,17 +70,20 @@
       <br>
       <div class="hero-ctas">
         <a class="btn btn-primary" href="about.html">About me</a>
-        <a class="btn btn-outline" href="https://github.com/favia96?tab=repositories" target="_blank">GitHub Repos ↗</a>
-        <a class="btn btn-outline" href="https://www.linkedin.com/in/federico-favia/" target="_blank">LinkedIn ↗</a>
+        <a class="btn btn-outline" href="https://github.com/favia96?tab=repositories" target="_blank" data-goatcounter-click="link-github-hero" data-goatcounter-title="GitHub (hero CTA)">GitHub Repos ↗</a>
+        <a class="btn btn-outline" href="https://www.linkedin.com/in/federico-favia/" target="_blank" data-goatcounter-click="link-linkedin-hero" data-goatcounter-title="LinkedIn (hero CTA)">LinkedIn ↗</a>
       </div>
       <div class="hero-scroll-indicator">
         <div class="scroll-line"></div>
         <span>Scroll to projects</span>
       </div>
     </div>
-    <div class="hero-photo">
-      <img src="images/profile.png" alt="Federico Favia" onerror="this.style.display='none'">
-      <span class="hero-photo-label">Federico Favia</span>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo">
+        <img src="images/profile.png" alt="Federico Favia" onerror="this.style.display='none'">
+        <span class="hero-photo-label">Federico Favia</span>
+      </div>
+      <a class="btn btn-primary hero-photo-cta" href="resume_files/resume_federico_favia.pdf" target="_blank" data-goatcounter-click="download-cv-hero" data-goatcounter-title="Download CV (hero)" data-goatcounter-no-session="1">⬇ Download CV</a>
     </div>
   </section>
 
@@ -383,7 +395,7 @@
           <p class="contact-tagline">Let's build something<br /><span>worth seeing.</span></p>
           <div>
             <div class="contact-info-label">Email</div>
-            <div class="contact-info-value"><a href="mailto:federic.fav@gmail.com">federic.fav@gmail.com</a></div>
+            <div class="contact-info-value"><a href="mailto:federic.fav@gmail.com" data-goatcounter-click="click-email-contact" data-goatcounter-title="Email (contact section)">federic.fav@gmail.com</a></div>
           </div>
           <div>
             <div class="contact-info-label">Phone</div>
@@ -452,8 +464,8 @@
         <div class="footer-brand">Federico <span>Favia</span></div>
         <p class="footer-tagline">Senior Computer Vision &amp; ML Engineer.<br />Building visual production-grade AI systems in the real world.</p>
         <div style="display:flex;gap:1rem;">
-          <a class="btn btn-outline" href="https://www.linkedin.com/in/federico-favia/" target="_blank" style="font-size:0.65rem;padding:0.5rem 1rem;">LinkedIn ↗</a>
-          <a class="btn btn-outline" href="https://github.com/favia96" target="_blank" style="font-size:0.65rem;padding:0.5rem 1rem;">GitHub ↗</a>
+          <a class="btn btn-outline" href="https://www.linkedin.com/in/federico-favia/" target="_blank" style="font-size:0.65rem;padding:0.5rem 1rem;" data-goatcounter-click="link-linkedin-footer" data-goatcounter-title="LinkedIn (footer)">LinkedIn ↗</a>
+          <a class="btn btn-outline" href="https://github.com/favia96" target="_blank" style="font-size:0.65rem;padding:0.5rem 1rem;" data-goatcounter-click="link-github-footer" data-goatcounter-title="GitHub (footer)">GitHub ↗</a>
         </div>
       </div>
       <div>
@@ -465,8 +477,8 @@
       <div>
         <div class="footer-col-title">Contact</div>
         <ul class="footer-links">
-          <li><a href="mailto:federic.fav@gmail.com"><span class="__cf_email__" data-cfemail="federic.fav@gmail.com">federic.fav@gmail.com</span></a></li>
-          <li><a href="tel:+393465759669">+39 346 5759669</a></li>
+          <li><a href="mailto:federic.fav@gmail.com" data-goatcounter-click="click-email-footer" data-goatcounter-title="Email (footer)"><span class="__cf_email__" data-cfemail="federic.fav@gmail.com">federic.fav@gmail.com</span></a></li>
+          <li><a href="tel:+393465759669" data-goatcounter-click="click-phone-footer" data-goatcounter-title="Phone (footer)">+39 346 5759669</a></li>
         </ul>
       </div>
       <div>
@@ -474,9 +486,47 @@
         <ul class="footer-links">
           <li><a href="index.html">Projects</a></li>
           <li><a href="about.html">About me</a></li>
-          <li><a href="resume_files/resume_federico_favia.pdf">CV / Resume</a></li>
+          <li><a href="resume_files/resume_federico_favia.pdf" data-goatcounter-click="download-cv-footer" data-goatcounter-title="Download CV (footer)" data-goatcounter-no-session="1">CV / Resume</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy">© Copyright Federico Favia 2026
+      <span class="footer-copy">© Copyright Federico Favia 2026</span>
+      <span class="footer-copy">Uses privacy-friendly, cookieless analytics (GoatCounter · Cloudflare) — no tracking cookies.</span>
+    </div>
+  </footer>
+
+  <script id="contact-form-script">
+    // ─── Contact Form ───
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      var name    = document.getElementById('cf-name').value.trim();
+      var email   = document.getElementById('cf-email').value.trim();
+      var topic   = document.getElementById('cf-topic');
+      var topicLabel = topic.options[topic.selectedIndex].text;
+      var message = document.getElementById('cf-message').value.trim();
+      var status  = document.getElementById('cf-status');
+
+      var subject = encodeURIComponent('[Portfolio] ' + topicLabel + ' — from ' + name);
+      var body    = encodeURIComponent(
+        'Hi Federico,\n\n' + message +
+        '\n\n---\nFrom: ' + name +
+        '\nEmail: ' + email +
+        '\nTopic: ' + topicLabel
+      );
+
+      var mailto = 'mailto:federic.fav@gmail.com?subject=' + subject + '&body=' + body;
+
+      /* Try to open mail client */
+      try {
+        window.location.href = mailto;
+        status.textContent = '✓ Your mail client should open now.';
+        status.className = 'form-status success';
+      } catch(err) {
+        status.textContent = '✗ Could not open mail client — please email federic.fav@gmail.com directly.';
+        status.className = 'form-status error';
+      }
+    }
+  </script>
+</body>
+</html>
