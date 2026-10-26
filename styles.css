@@ -1512,3 +1512,22 @@ section { padding: 6rem 3rem; }
   section { padding: 3rem 1rem; }
   .hero-name { font-size: 3rem; }
 }
+/* ─── LANGUAGE SWITCH ─── */
+.nav-links .lang-switch {
+  display: flex; align-items: center; gap: 0.4rem;
+  margin-left: 0.5rem; padding-left: 1.5rem;
+  border-left: 1px solid var(--border);
+}
+.nav-links .lang-switch span { color: var(--text-muted); font-size: 0.75rem; }
+.nav-links .lang-switch a.active { pointer-events: none; }
+@media (max-width: 600px) {
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.65rem; letter-spacing: 0.06em; }
+  .nav-links .lang-switch { margin-left: 0; padding-left: 0.8rem; }
+}
+
+
+/* ─── BOOK A CHAT (Calendly) ─── */
+.contact-book { margin: 0 0 1.8rem; }
+.contact-book .form-note { display: block; margin-top: 0.7rem; }
+.contact-book .form-note.intro { margin: 0 0 0.9rem; color: var(--text-dim); }
