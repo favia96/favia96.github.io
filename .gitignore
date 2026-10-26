@@ -4,3 +4,6 @@
 *.DS_Store
 *.localized
 tracking.md
+resume_files/*_old*
+images/*_old*
+docs*
